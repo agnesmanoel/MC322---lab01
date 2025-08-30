@@ -1,8 +1,8 @@
 abstract class PersonagemAbstrato {
     
-    private String nome;
-    public int PontosDeVida;
-    public  int forca;
+    protected  String nome;
+    protected  int PontosDeVida;
+    protected  int forca;
 
     public PersonagemAbstrato(String n, int pv, int f) {
         this.nome = n;
@@ -20,6 +20,10 @@ abstract class PersonagemAbstrato {
        resultado = resultado+"Força: "+this.forca+"\n"; 
 
        System.out.println(resultado);
+    }
+
+    public  String getNome(){
+        return this.nome;
     }
 
     public abstract void atacar(PersonagemAbstrato alvo);
