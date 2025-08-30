@@ -1,8 +1,5 @@
 abstract class HeroiAbstrato extends PersonagemAbstrato {
     
-    private String nome;
-    private int PontosDeVida;
-    private int forca;
     private int nivel;
     private int experiencia;
 
@@ -20,6 +17,6 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
 
     // }
 
-    public abstract void usarHabilidadeEspecial(PersonagemAbstrato alvo);
+    public abstract int usarHabilidadeEspecial(PersonagemAbstrato alvo);
 
 }

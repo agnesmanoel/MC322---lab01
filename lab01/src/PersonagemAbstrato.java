@@ -22,6 +22,6 @@ abstract class PersonagemAbstrato {
        System.out.println(resultado);
     }
 
-    public abstract void atacar(PersonagemAbstrato alvo);
+    public abstract int atacar(PersonagemAbstrato alvo);
 
 }
