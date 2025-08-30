@@ -1,10 +1,8 @@
 abstract class MonstroAbstrato extends PersonagemAbstrato{
     
-    public int xpConcedido;
-    public String fraseDeEfeito;
-    public String fraseVitoria;
-
-
+    protected int xpConcedido;
+    protected String fraseDeEfeito;
+    protected String fraseVitoria;
 
     public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria) {
         super(n, pv, f);
@@ -12,8 +10,19 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
         this.fraseDeEfeito = fraseEfeito;
         this.fraseVitoria = fraseVitoria;
     }
+    
+    @Override
+    public String toString() {
 
-    // public void exibirStatus () {
+        String resultado = super.toString();
+        resultado = resultado + "Experiência concedida: " + this.xpConcedido + "\n";
 
-    // }
+        return resultado;
+    }
+
+    @Override
+    public void exibirStatus() {
+        System.out.println(this);
+    }
+
 }

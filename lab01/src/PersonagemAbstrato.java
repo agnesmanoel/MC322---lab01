@@ -14,12 +14,18 @@ abstract class PersonagemAbstrato {
         this.PontosDeVida -= dano;
     }
 
-    public void exibirStatus() {
+    @Override
+    public String toString() {
+
        String resultado = "Nome: "+this.nome+"\n";
        resultado = resultado+"Vida: "+this.PontosDeVida+"\n";
-       resultado = resultado+"Força: "+this.forca+"\n"; 
+       resultado = resultado+"Força: "+this.forca+"\n";
 
-       System.out.println(resultado);
+        return resultado;
+    }
+
+    public void exibirStatus() {
+       System.out.println(this);
     }
 
     public  String getNome(){
