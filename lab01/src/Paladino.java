@@ -15,8 +15,7 @@ public class Paladino extends HeroiAbstrato{
         int dano = 0;
         Random random = new Random();
         int num_aleat = random.nextInt(0, 100);
-
-        
+       
 
         return dano;
     }
