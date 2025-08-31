@@ -21,7 +21,8 @@ public class App {
         ArrayList<MonstroAbstrato> listaMonstro = new ArrayList<>(Arrays.asList(arrayMonstros));
 
 
-        HeroiAbstrato[] arrayHerois = {personagemPaladino, personagemFeiticeira};
+        //HeroiAbstrato[] arrayHerois = {personagemPaladino, personagemFeiticeira};
+        System.out.println("\n");
 
         // gerador de números aleatórios
         Random random = new Random();
@@ -38,6 +39,7 @@ public class App {
                 numAleat = random.nextInt(0, (listaMonstro.size()-1)); 
             } 
             MonstroAbstrato monstroAtual = listaMonstro.get(numAleat);
+            monstroAtual.printImagem();
 
             // enquanto um dos combatentes estiverem vivos
             while(personagemPaladino.estaVivo() && monstroAtual.estaVivo()){
