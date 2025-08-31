@@ -5,12 +5,21 @@ public class Feiticeira extends HeroiAbstrato {
     private int PocaoAstral;
 
     public Feiticeira () {
-        super("Feiticeira", 16, 8, "Você erra ao me subestimar, aberração...", "A Natureza não terá piedade dos seus restos!");
+        super("Feiticeira", 16, 8, "Feiticeira: Você erra ao me subestimar, aberração...", "Feiticeira: A Natureza não terá piedade dos seus restos!");
         this.PocaoAstral = 1;
     }
 
-    public void atacar(MonstroAbstrato alvo) {
+    public void atacar(PersonagemAbstrato alvo) {
         
+        MonstroAbstrato monstro;
+
+        if (alvo instanceof MonstroAbstrato) {
+            monstro = (MonstroAbstrato) alvo;
+        }
+        else {
+            return;
+        }
+
         int dano;
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
@@ -18,10 +27,10 @@ public class Feiticeira extends HeroiAbstrato {
 
         if (numAleat + extra > 50) {
             dano = this.forca;
-            alvo.receberDano(dano);
+            monstro.receberDano(dano);
 
-            if (alvo.PontosDeVida <= 0) {
-                ganhaExperiencia(alvo.xpConcedido);
+            if (monstro.PontosDeVida <= 0) {
+                ganhaExperiencia(monstro.xpConcedido);
             }
 
             System.out.println(this.fraseDeEfeito);
@@ -31,18 +40,27 @@ public class Feiticeira extends HeroiAbstrato {
         }
     }
 
-    public void usarHabilidadeEspecial(MonstroAbstrato alvo) {
+    public void usarHabilidadeEspecial(PersonagemAbstrato alvo) {
+
+        MonstroAbstrato monstro;
+
+        if (alvo instanceof MonstroAbstrato) {
+            monstro = (MonstroAbstrato) alvo;
+        }
+        else {
+            return;
+        }
 
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
         int dano = (this.nivel + 1) * this.PocaoAstral;
 
         if (numAleat > 50 && this.PontosDeVida <= 4 * (this.nivel + 1)) {
-            alvo.receberDano(dano);
+            monstro.receberDano(dano);
             this.PontosDeVida += dano;
 
-            if (alvo.PontosDeVida <= 0) {
-                ganhaExperiencia(alvo.xpConcedido);
+            if (monstro.PontosDeVida <= 0) {
+                ganhaExperiencia(monstro.xpConcedido);
             }
             System.out.println(this.fraseDeEfeito);
         }

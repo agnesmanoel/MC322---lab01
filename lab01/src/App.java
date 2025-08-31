@@ -4,7 +4,7 @@ public class App {
         //Instanciando objetos heróis
         Paladino personagemPaladino = new Paladino();
         Feiticeira personagemFeiticeira = new Feiticeira();
-
+        
         //Instanciando objetos vilões
         Fantasma personagemFantasma = new Fantasma();
         Esqueleto personagemEsqueleto = new Esqueleto();
@@ -18,10 +18,10 @@ public class App {
                 if(arrayMonstros[i].PontosDeVida>0){
                     arrayMonstros[i].atacar(personagemPaladino);
                 }
-                System.out.println("----------------------");
+                System.out.println("\n-----------------------");
                 personagemPaladino.exibirStatus();
                 arrayMonstros[i].exibirStatus();
-                System.out.println("-----------------------");
+                System.out.println("-----------------------\n");
             }
 
             if(personagemPaladino.PontosDeVida <= 0){
@@ -34,8 +34,5 @@ public class App {
         if(personagemPaladino.PontosDeVida>0){
             System.out.println("VOCE VENCEU");
         }
-
-
-
     }
 }
