@@ -20,8 +20,7 @@ public class App {
         MonstroAbstrato[] arrayMonstros =  {personagemFantasma, personagemEsqueleto, personagemMonarcaEsqueleto};
         ArrayList<MonstroAbstrato> listaMonstro = new ArrayList<>(Arrays.asList(arrayMonstros));
 
-
-        HeroiAbstrato[] arrayHerois = {personagemPaladino, personagemFeiticeira};
+        //HeroiAbstrato[] arrayHerois = {personagemPaladino, personagemFeiticeira};
         System.out.println("\n");
 
 
@@ -35,6 +34,7 @@ public class App {
             numAleat = random.nextInt(0, (listaMonstro.size()-1)); 
             } 
             MonstroAbstrato monstroAtual = listaMonstro.get(numAleat);
+            monstroAtual.printImagem();
 
             // enquanto um dos personagens estiverem vivos
             while(personagemPaladino.PontosDeVida>0 && monstroAtual.PontosDeVida>0){
@@ -50,7 +50,6 @@ public class App {
                 System.out.println("----------------------");
                 
             } 
->>>>>>> ajustando-main
 
             if(personagemPaladino.PontosDeVida>0){
                 listaMonstro.remove(numAleat);

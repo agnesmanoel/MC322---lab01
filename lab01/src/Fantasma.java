@@ -3,7 +3,7 @@ import java.util.Random;
 public  class Fantasma extends MonstroAbstrato  {
     
     public Fantasma(){
-        super("Fantasma", 5, 2, 2, "Fantasma: SINTA A MINHA DOR!!!!!","Fantasma: COMPARTILHE DA MINHA SOLIDÃO");
+        super("Fantasma", 5, 2, 2, "Fantasma: SINTA A MINHA DOR!!!!!","Fantasma: COMPARTILHE DA MINHA SOLIDÃO","lab01/imagens-texto/fantasma.txt");
 
     }
 

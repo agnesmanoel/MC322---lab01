@@ -5,8 +5,8 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
     protected  String fraseDeEfeito;
     protected  String fraseVitoria;
 
-    public HeroiAbstrato(String n, int pv, int f, String fraseEfeito, String fraseVitoria) {
-        super(n, pv, f);
+    public HeroiAbstrato(String n, int pv, int f, String fraseEfeito, String fraseVitoria, String imageURL) {
+        super(n, pv, f, imageURL);
         this.nivel = 0;
         this.experiencia = 0;
         this.fraseDeEfeito = fraseEfeito;
