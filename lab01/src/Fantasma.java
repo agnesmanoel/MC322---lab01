@@ -13,7 +13,7 @@ public  class Fantasma extends MonstroAbstrato  {
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
 
-        if (numAleat<40) {
+        if (numAleat<60) {
             dano = this.forca;
             alvo.receberDano(dano);
             System.out.println(this.fraseDeEfeito);

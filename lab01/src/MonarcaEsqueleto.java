@@ -9,7 +9,6 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
 
 
     public void atacar(PersonagemAbstrato alvo){
-        
         int dano = 0;
         Random random = new Random();
         int numAleat = random.nextInt(0,100);

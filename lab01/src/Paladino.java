@@ -5,7 +5,7 @@ public class Paladino extends HeroiAbstrato{
     private int AuraDaJustica; 
 
     public Paladino() {
-        super("Paladino", 12, 10, "Os meus deuses ajudam os jutos!", "Que sua alma perturbada descanse enfim...");
+        super("Paladino", 12, 10, "Os meus deuses ajudam os justos!", "Que sua alma perturbada descanse enfim...");
         this.AuraDaJustica = 1;
     }
 

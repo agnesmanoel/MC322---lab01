@@ -26,6 +26,9 @@ public class Feiticeira extends HeroiAbstrato {
 
             System.out.println(this.fraseDeEfeito);
         }
+        else {
+            System.out.println("nao acertei");
+        }
     }
 
     public void usarHabilidadeEspecial(MonstroAbstrato alvo) {
@@ -41,7 +44,6 @@ public class Feiticeira extends HeroiAbstrato {
             if (alvo.PontosDeVida <= 0) {
                 ganhaExperiencia(alvo.xpConcedido);
             }
-
             System.out.println(this.fraseDeEfeito);
         }
 
