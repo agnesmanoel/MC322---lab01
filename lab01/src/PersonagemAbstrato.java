@@ -11,7 +11,7 @@ abstract class PersonagemAbstrato {
     }
 
     public void receberDano(int dano) {
-        this.PontosDeVida -= dano;
+        this.PontosDeVida = Math.max(this.PontosDeVida - dano, 0);
     }
 
     @Override
@@ -30,6 +30,10 @@ abstract class PersonagemAbstrato {
 
     public  String getNome(){
         return this.nome;
+    }
+
+    public boolean estaVivo(){
+        return this.PontosDeVida > 0;
     }
 
     public abstract void atacar(PersonagemAbstrato alvo);

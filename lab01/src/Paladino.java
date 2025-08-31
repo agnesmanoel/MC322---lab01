@@ -5,7 +5,7 @@ public class Paladino extends HeroiAbstrato{
     private int AuraDaJustica; 
 
     public Paladino() {
-        super("Paladino", 12, 5, "Paladino: Os meus deuses ajudam os justos!", "Paladino: Que sua alma perturbada descanse enfim...");
+        super("Paladino", 12, 5, "\rPaladino: Os meus deuses ajudam os justos!", "\rPaladino: Que sua alma perturbada descanse enfim...");
         this.AuraDaJustica = 1;
     }
 
@@ -29,12 +29,13 @@ public class Paladino extends HeroiAbstrato{
             dano = this.forca;
             monstro.receberDano(dano);
 
-            if (monstro.PontosDeVida <= 0) {
-                ganhaExperiencia(monstro.xpConcedido);
-            }
-
             System.out.println(this.fraseDeEfeito);
+
+            if (! monstro.estaVivo()) { this.ganhaExperiencia(monstro.xpConcedido); }
+            
         }
+
+        else {System.out.println("\r" + this.nome + ": *** ERROU O ATAQUE ***"); }
     }
 
     public void usarHabilidadeEspecial(PersonagemAbstrato alvo) {
@@ -56,13 +57,14 @@ public class Paladino extends HeroiAbstrato{
         if (numAleat + 5 * (this.nivel + 1) > 85) {
             dano = this.forca + extra;
             monstro.receberDano(dano);
-
-            if (monstro.PontosDeVida <= 0) {
-                ganhaExperiencia(monstro.xpConcedido);
-            }
-
-            System.out.println(this.fraseDeEfeito);
+            
+            System.out.println(this.fraseVitoria);
+            
+            if (! monstro.estaVivo()) { this.ganhaExperiencia(monstro.xpConcedido); }
+   
         }
+
+        else { System.out.println("\r" + this.nome + ": *** ERROU A HABILIDADE ESPECIAL ***"); }
 
     }
 

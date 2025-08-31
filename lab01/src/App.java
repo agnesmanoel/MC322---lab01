@@ -22,74 +22,56 @@ public class App {
 
 
         HeroiAbstrato[] arrayHerois = {personagemPaladino, personagemFeiticeira};
-        System.out.println("\n");
 
-
+        // gerador de números aleatórios
+        Random random = new Random();
+        
+        // Variáveis aleatórias
+        int numAleat;
+        int flagAtac;
 
         while(!listaMonstro.isEmpty()){
-            int numAleat = 0;
-
+            
             // escolhendo um monstro aleatoriamente
+            numAleat = 0;
             if(listaMonstro.size()>1) {
-            Random random = new Random();
-            numAleat = random.nextInt(0, (listaMonstro.size()-1)); 
+                numAleat = random.nextInt(0, (listaMonstro.size()-1)); 
             } 
             MonstroAbstrato monstroAtual = listaMonstro.get(numAleat);
 
-            // enquanto um dos personagens estiverem vivos
-            while(personagemPaladino.PontosDeVida>0 && monstroAtual.PontosDeVida>0){
-                personagemPaladino.atacar(monstroAtual);
-                if(monstroAtual.PontosDeVida>0){
-                    monstroAtual.atacar(personagemPaladino);
-                } 
+            // enquanto um dos combatentes estiverem vivos
+            while(personagemPaladino.estaVivo() && monstroAtual.estaVivo()){
 
-                System.out.println("\n");
-                System.out.println("----------------------");
+                flagAtac = random.nextInt(0, 100);
+                if (flagAtac <= 70) { personagemPaladino.atacar(monstroAtual); }
+                else { personagemPaladino.usarHabilidadeEspecial(monstroAtual); }
+                
+                if(monstroAtual.estaVivo()){ monstroAtual.atacar(personagemPaladino); } 
+
+                System.out.println("\n----------------------");
                 personagemPaladino.exibirStatus();
                 monstroAtual.exibirStatus();
-                System.out.println("----------------------");
+                System.out.println("----------------------\n");
+
+                Thread.sleep(3000);
                 
             } 
->>>>>>> ajustando-main
 
-            if(personagemPaladino.PontosDeVida>0){
-                listaMonstro.remove(numAleat);
-            } else {
-                System.out.println("game over");
+            if(personagemPaladino.estaVivo()){ listaMonstro.remove(numAleat); } 
+            else {
+                System.out.println("    *****************");
+                System.out.println("    *** GAME OVER ***");
+                System.out.println("    *****************");
                 break;
             }
 
 
-
-
-
         }
 
-        // for (int i = 0; i < 2; i++) {
-        //     MonstroAbstrato monstroAtual = arrayMonstros[i];
-        //     while(arrayHerois[0].PontosDeVida>0 && arrayMonstros[i].PontosDeVida>0){
-        //         personagemPaladino.atacar(monstroAtual);
-        //         if(monstroAtual.PontosDeVida>0){
-        //             arrayMonstros[i].atacar(personagemPaladino);
-        //         }
-        //         System.out.println("----------------------");
-        //         personagemPaladino.exibirStatus();
-        //         monstroAtual.exibirStatus();
-        //         System.out.println("-----------------------");
-        //     }
-        //     if(personagemPaladino.PontosDeVida <= 0){
-        //         System.out.println("game over");
-        //         break;
-        //     }
-            
-        // }
-
-
-
-
-
-        if(personagemPaladino.PontosDeVida>0){
-            System.out.println("vc venceu");
+        if(personagemPaladino.estaVivo()){
+            System.out.println("    ***************");
+            System.out.println("    *** VITÓRIA ***");
+            System.out.println("    ***************");
         }
     }
 }

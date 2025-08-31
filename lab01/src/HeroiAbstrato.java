@@ -16,7 +16,7 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
     public void ganhaNivel() {
         this.nivel ++;
         this.PontosDeVida += this.nivel;
-        System.out.println("*** Subiu de nível ***");
+        System.out.println("*** SUBIU DE NÍVEL ***");
     }
 
     public void ganhaExperiencia(int xp) {

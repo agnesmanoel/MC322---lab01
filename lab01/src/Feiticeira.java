@@ -5,7 +5,7 @@ public class Feiticeira extends HeroiAbstrato {
     private int PocaoAstral;
 
     public Feiticeira () {
-        super("Feiticeira", 16, 8, "Feiticeira: Você erra ao me subestimar, aberração...", "Feiticeira: A Natureza não terá piedade dos seus restos!");
+        super("Feiticeira", 16, 8, "\rFeiticeira: Você erra ao me subestimar, aberração...", "\rFeiticeira: A Natureza não terá piedade dos seus restos!");
         this.PocaoAstral = 1;
     }
 
@@ -29,15 +29,14 @@ public class Feiticeira extends HeroiAbstrato {
             dano = this.forca;
             monstro.receberDano(dano);
 
-            if (monstro.PontosDeVida <= 0) {
-                ganhaExperiencia(monstro.xpConcedido);
-            }
-
             System.out.println(this.fraseDeEfeito);
+
+            if (monstro.PontosDeVida <= 0) { ganhaExperiencia(monstro.xpConcedido); }
+
+            
         }
-        else {
-            System.out.println("nao acertei");
-        }
+        
+        else {System.out.println("\r" + this.nome + ": *** ERROU O ATAQUE ***"); }
     }
 
     public void usarHabilidadeEspecial(PersonagemAbstrato alvo) {
@@ -59,11 +58,13 @@ public class Feiticeira extends HeroiAbstrato {
             monstro.receberDano(dano);
             this.PontosDeVida += dano;
 
-            if (monstro.PontosDeVida <= 0) {
-                ganhaExperiencia(monstro.xpConcedido);
-            }
             System.out.println(this.fraseDeEfeito);
+
+            if (monstro.PontosDeVida <= 0) { ganhaExperiencia(monstro.xpConcedido); }
+            
         }
+
+        else { System.out.println("\r" + this.nome + ": *** ERROU A HABILIDADE ESPECIAL ***"); }
 
     }
 
