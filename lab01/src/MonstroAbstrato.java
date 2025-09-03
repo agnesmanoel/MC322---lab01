@@ -19,8 +19,9 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
 
         String resultado = super.toString();
         resultado = resultado + "Experiência concedida: " + this.xpConcedido;
+        resultado = "\n--------------------------\n" + resultado + "\n\n--------------------------\n";
 
-        return "\n" + resultado;
+        return resultado;
     }
 
     @Override

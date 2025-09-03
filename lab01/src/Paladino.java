@@ -6,7 +6,7 @@ public class Paladino extends HeroiAbstrato{
 
     public Paladino() {
 
-        super("Paladino", 12, 5, "Paladino: Os meus deuses ajudam os justos!", "Paladino: Que sua alma perturbada descanse enfim...","lab01/imagens-texto/paladino.txt");
+        super("Paladino", 12, 5, "- Paladino: Os meus deuses ajudam os justos!", "- Paladino: Que sua alma perturbada descanse enfim...","lab01/imagens-texto/paladino.txt");
         this.AuraDaJustica = 1;
     }
 

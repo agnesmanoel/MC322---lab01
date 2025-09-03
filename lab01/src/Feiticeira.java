@@ -5,7 +5,7 @@ public class Feiticeira extends HeroiAbstrato {
     private int PocaoAstral;
 
     public Feiticeira () {
-        super("Feiticeira", 16, 8, "Feiticeira: Você erra ao me subestimar, aberração...", "Feiticeira: A Natureza não terá piedade dos seus restos!","lab01/imagens-texto/feiticeira.txt");
+        super("Feiticeira", 16, 8, "- Feiticeira: Você erra ao me subestimar, aberração...", "- Feiticeira: A Natureza não terá piedade dos seus restos!","lab01/imagens-texto/feiticeira.txt");
         this.PocaoAstral = 1;
     }
 

@@ -53,7 +53,7 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         String resultado = super.toString();
         resultado = resultado + "Nível: " + this.nivel + "\n";
         resultado = resultado + "Experiência: " + this.experiencia;
-
+        resultado = "\n---------------\n" + resultado + "\n---------------\n";
         return resultado;
     }
 
