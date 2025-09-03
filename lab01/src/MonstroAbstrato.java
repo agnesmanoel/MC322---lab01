@@ -5,13 +5,15 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
     protected int xpConcedido;
     protected String fraseDeEfeito;
     protected String fraseVitoria;
+    protected String fraseApresentacao; 
     protected String imageURL;
 
-    public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria, String URL) {
+    public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria, String fraseApresentacao, String URL) {
         super(n, pv, f, URL);
         this.xpConcedido = xp;
         this.fraseDeEfeito = fraseEfeito;
         this.fraseVitoria = fraseVitoria;
+        this.fraseApresentacao = fraseApresentacao; 
     }
     
     @Override

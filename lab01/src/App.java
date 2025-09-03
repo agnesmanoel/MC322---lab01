@@ -1,7 +1,10 @@
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class App {
@@ -26,13 +29,34 @@ public class App {
 
         // gerador de números aleatórios
         Random random = new Random();
+
+        // criando personagem aleatorio
+
+        boolean bool = random.nextBoolean();
+        HeroiAbstrato personagemAtual = personagemPaladino;
+
+        if(bool){
+            personagemAtual = personagemFeiticeira;
+        }
+
+        
         
         // Variáveis aleatórias
         int numAleat;
         int flagAtac;
         int contRound;
+        int fase=0;
 
-        while(!listaMonstro.isEmpty()){
+
+        // incializando a historia
+        printaCastelo();
+        System.out.println("O castelo está em perigo.... precisamos de alguém para salvar.\nO reino de tchutchuwamako foi tomado pelas mais sombrias critaturas do inferno.\nSabendo disso, "+personagemAtual.nome+"muniu-se de suas melhores armar e correu para salvar o castelo.");
+        System.out.println("\n"+"\n");
+        Thread.sleep(3000);
+
+
+        while(!listaMonstro.isEmpty()){    
+            fase++;        
             
             // escolhendo um monstro aleatoriamente
             numAleat = 0;
@@ -40,23 +64,26 @@ public class App {
                 numAleat = random.nextInt(0, (listaMonstro.size()-1)); 
             } 
             MonstroAbstrato monstroAtual = listaMonstro.get(numAleat);
+            historia(personagemAtual, monstroAtual, fase);
+            Thread.sleep(4000);
+
             // monstroAtual.printImagem();
-            printSideBySideBottom(personagemPaladino.getFileImage(), monstroAtual.getFileImage(), "             ");
-            Thread.sleep(2500);
+            printSideBySideBottom(personagemAtual.getFileImage(), monstroAtual.getFileImage(), "             ");
 
             contRound = 0;
 
+
             // enquanto um dos combatentes estiverem vivos
-            while(personagemPaladino.estaVivo() && monstroAtual.estaVivo()){
+            while(personagemAtual.estaVivo() && monstroAtual.estaVivo()){
 
                 contRound ++;
                 System.out.println("|Turno: " + contRound + "|\r\n");
 
                 flagAtac = random.nextInt(0, 100);
-                if (flagAtac <= 75) { personagemPaladino.atacar(monstroAtual); }
-                else { personagemPaladino.usarHabilidadeEspecial(monstroAtual); }
+                if (flagAtac <= 75) { personagemAtual.atacar(monstroAtual); }
+                else { personagemAtual.usarHabilidadeEspecial(monstroAtual); }
                 
-                if(monstroAtual.estaVivo()){ monstroAtual.atacar(personagemPaladino); } 
+                if(monstroAtual.estaVivo()){ monstroAtual.atacar(personagemAtual); } 
 
                 Thread.sleep(1500);
                 
@@ -64,7 +91,7 @@ public class App {
                 System.out.println("Status");
                 System.out.println("\r------");
 
-                printSideBySideUp(personagemPaladino.toString(), monstroAtual.toString(), "       ");
+                printSideBySideUp(personagemAtual.toString(), monstroAtual.toString(), "       ");
                 
                 Thread.sleep(4500);
                 
@@ -72,7 +99,7 @@ public class App {
 
             contRound = 0;
 
-            if(personagemPaladino.estaVivo()){ listaMonstro.remove(numAleat); } 
+            if(personagemAtual.estaVivo()){ listaMonstro.remove(numAleat); } 
             else {
                 System.out.println("\n\n");
                 System.out.println("            *****************");
@@ -85,7 +112,7 @@ public class App {
 
         }
 
-        if(personagemPaladino.estaVivo()){
+        if(personagemAtual.estaVivo()){
             System.out.println("\n\n");
             System.out.println("            ***************");
             System.out.println("            *** VITÓRIA ***");
@@ -174,5 +201,67 @@ public class App {
             }
             
         }
+    }
+
+    public static void historia(HeroiAbstrato heroiAtual, MonstroAbstrato monstroAtual, int fase) throws InterruptedException{
+        String nomeMonstro = monstroAtual.nome;
+        String nomeHeroi = heroiAtual.nome;
+
+        if(fase == 1){
+        System.out.println("O primeiro monstro que " + nomeHeroi + " econtra, na porta da frente do castelo é " + nomeMonstro);
+        Thread.sleep(2000);
+        System.out.println("\n");
+        System.out.println(nomeMonstro + ":" + monstroAtual.fraseApresentacao);
+        Thread.sleep(2000);
+        System.out.println("\n");
+        System.out.println("Temendo pela integridade do reino " +nomeHeroi+ " inicia a luta");
+
+
+        }
+
+        if(fase == 2){
+            System.out.println("O segundo monstro que " + nomeHeroi + " econtra, no corredor da masmorra do castelo é " + nomeMonstro);
+            Thread.sleep(2000);
+            System.out.println("\n");
+            System.out.println(nomeMonstro + ": " + monstroAtual.fraseApresentacao);
+            Thread.sleep(2000);
+            System.out.println("\n");
+            System.out.println("Temendo pela integridade dos moradores do seu querido reino " +nomeHeroi+ " inicia a segunda luta");
+
+
+        }
+
+        if(fase == 3){
+            System.out.println("O terceiro monstro que " + nomeHeroi + " econtra na masmorra do castelo é " + nomeMonstro);
+            Thread.sleep(2000);
+            System.out.println("\n");
+            System.out.println(nomeMonstro + ":" + monstroAtual.fraseApresentacao);
+            Thread.sleep(2000);
+            System.out.println("\n");
+            System.out.println("Com um último suspiro, " +nomeHeroi+ " reúne suas últimas forças e inicia a terceira luta");
+
+
+        }
+        
+
+    }
+
+    public static void printaCastelo(){
+                String image = "\n";
+        File imagem = new File("lab01/imagens-texto/castelo.txt");
+        try {
+            Scanner reader = new Scanner(imagem);
+            while(reader.hasNextLine()){
+                String linha = reader.nextLine();
+                image = image + linha + "\n";
+            } reader.close();
+         }  
+            catch (FileNotFoundException e) {
+                System.out.println("erro ao achar URL AAAAAAAAAAAAAAA");
+                return;
+
+        }
+
+        System.out.println(image);
     }
 }

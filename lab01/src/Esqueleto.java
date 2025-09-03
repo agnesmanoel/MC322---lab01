@@ -4,7 +4,7 @@ public  class Esqueleto extends MonstroAbstrato  {
     
     public Esqueleto(){
 
-        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA HA HA OSSADA SINISTRA!!!!!", "- Esqueleto: TORNE-SE UM DE NÓS","lab01/imagens-texto/esqueleto.txt");
+        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA HA HA OSSADA SINISTRA!!!!!", "- Esqueleto: TORNE-SE UM DE NÓS","EU ESQUELETO NÃO TEREI PENA DE TE FAZER UM DE MIM","lab01/imagens-texto/esqueleto.txt");
 
     }
 
