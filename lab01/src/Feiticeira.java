@@ -25,10 +25,11 @@ public class Feiticeira extends HeroiAbstrato {
         int numAleat = random.nextInt(0,100);
         int extra = 10 * this.nivel;
 
-        if (numAleat + extra > 50) {
+        if (numAleat + extra > 30) {
             dano = this.forca;
             monstro.receberDano(dano);
 
+            System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
             System.out.println(this.fraseDeEfeito);
 
             if (monstro.PontosDeVida <= 0) { ganhaExperiencia(monstro.xpConcedido); }
@@ -58,6 +59,7 @@ public class Feiticeira extends HeroiAbstrato {
             monstro.receberDano(dano);
             this.PontosDeVida += dano;
 
+            System.out.println(this.nome + ": *** ACERTOU A HABILIDADE ESPECIAL ***");
             System.out.println(this.fraseDeEfeito);
 
             if (monstro.PontosDeVida <= 0) { ganhaExperiencia(monstro.xpConcedido); }

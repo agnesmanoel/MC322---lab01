@@ -10,117 +10,106 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         
-        //Instanciando objetos heróis
+        //Instanciando objetos de Heróis Concretos
         Paladino personagemPaladino = new Paladino();
         Feiticeira personagemFeiticeira = new Feiticeira();
         
-        //Instanciando objetos vilões
+        //Instanciando objetos de Vilões Concretos
         Fantasma personagemFantasma = new Fantasma();
         Esqueleto personagemEsqueleto = new Esqueleto();
         MonarcaEsqueleto personagemMonarcaEsqueleto = new MonarcaEsqueleto();
 
-        // Criando lista de monstros e herois
+        // Criando listas de Monstros e Heróis
         MonstroAbstrato[] arrayMonstros =  {personagemFantasma, personagemEsqueleto, personagemMonarcaEsqueleto};
         ArrayList<MonstroAbstrato> listaMonstro = new ArrayList<>(Arrays.asList(arrayMonstros));
 
-
-        //HeroiAbstrato[] arrayHerois = {personagemPaladino, personagemFeiticeira};
-        System.out.println("\n");
-
-        // gerador de números aleatórios
+        // Gerador de números aleatórios
         Random random = new Random();
 
-        // criando personagem aleatorio
-
+        // Seleciona-se aleatoriamente a Feiticeira ou o Paladino para a camapnha de RPG
         boolean bool = random.nextBoolean();
         HeroiAbstrato personagemAtual = personagemPaladino;
-
         if(bool){
             personagemAtual = personagemFeiticeira;
         }
-
-        
         
         // Variáveis aleatórias
         int numAleat;
         int flagAtac;
+
+        // Variáveis de contagem
         int contRound;
         int fase=0;
 
-
-        // incializando a historia
-        printaCastelo();
-        System.out.println("O castelo está em perigo.... precisamos de alguém para salvar.\nO reino de tchutchuwamako foi tomado pelas mais sombrias critaturas do inferno.\nSabendo disso, "+personagemAtual.nome+"muniu-se de suas melhores armar e correu para salvar o castelo.");
-        System.out.println("\n"+"\n");
-        Thread.sleep(3000);
-
+        // Exibe a introdução da campanha
+        historia(personagemAtual, null, fase);
 
         while(!listaMonstro.isEmpty()){    
+            
             fase++;        
             
-            // escolhendo um monstro aleatoriamente
+            // Escolhe-se um monstro aleatoriamente para cada fase
             numAleat = 0;
             if(listaMonstro.size()>1) {
                 numAleat = random.nextInt(0, (listaMonstro.size()-1)); 
             } 
             MonstroAbstrato monstroAtual = listaMonstro.get(numAleat);
+            
+            // Exibe-se a respectiva fase
             historia(personagemAtual, monstroAtual, fase);
-            Thread.sleep(4000);
 
             // monstroAtual.printImagem();
             printSideBySideBottom(personagemAtual.getFileImage(), monstroAtual.getFileImage(), "             ");
 
+            // Iniciam-se os turnos de batalha, até que um dos combatentes perca
             contRound = 0;
-
-
-            // enquanto um dos combatentes estiverem vivos
             while(personagemAtual.estaVivo() && monstroAtual.estaVivo()){
 
                 contRound ++;
-                System.out.println("|Turno: " + contRound + "|\r\n");
 
+                // Exibe-se o respectivo turno
+                System.out.println("|Turno: " + contRound + "|\r\n");
+                Thread.sleep(1500);
+
+                // Seleciona-se aleatoriamente o tipo de ataque do herói
                 flagAtac = random.nextInt(0, 100);
-                if (flagAtac <= 75) { personagemAtual.atacar(monstroAtual); }
+                if (flagAtac <= 65) { personagemAtual.atacar(monstroAtual); }
                 else { personagemAtual.usarHabilidadeEspecial(monstroAtual); }
                 
+                // Caso o monstro sobreviva ao ataque, tem a chance de contra-atacar
                 if(monstroAtual.estaVivo()){ monstroAtual.atacar(personagemAtual); } 
 
-                Thread.sleep(1500);
-                
+                Thread.sleep(2000);
+
+                // Exibem-se os status de cada combatente
                 System.out.println("\r\n------");
                 System.out.println("Status");
                 System.out.println("\r------");
-
+                Thread.sleep(1500);
                 printSideBySideUp(personagemAtual.toString(), monstroAtual.toString(), "       ");
-                
-                Thread.sleep(4500);
+                Thread.sleep(2500);
                 
             }
 
             contRound = 0;
 
+            // Checagem se o herói continua vivo após o fim da batalha
             if(personagemAtual.estaVivo()){ listaMonstro.remove(numAleat); } 
             else {
-                System.out.println("\n\n");
-                System.out.println("            *****************");
-                System.out.println("            *** GAME OVER ***");
-                System.out.println("            *****************");
-                System.out.println("\n\n");
+                historia(personagemAtual, monstroAtual, -2);
                 break;
             }
 
 
         }
 
+        // Checagem se o herói continua vivo após as três fases da campanha
         if(personagemAtual.estaVivo()){
-            System.out.println("\n\n");
-            System.out.println("            ***************");
-            System.out.println("            *** VITÓRIA ***");
-            System.out.println("            ***************");
-            System.out.println("\n\n");
+            historia(personagemAtual, null, -1);
         }
     }
 
+    // Método criado para alinhar, por cima, blocos de texto - isto é, os personagens
     public static void printSideBySideUp(String block1, String block2, String separator) {
         
         String[] lines1 = block1.split("\\R"); // "\\R" handles various line terminators
@@ -151,6 +140,7 @@ public class App {
         }
     }
 
+    // Método criado para alinhar, por baixo, blocos de texto
     public static void printSideBySideBottom(String block1, String block2, String separator) {
         
         String[] lines1 = block1.split("\\R"); // "\\R" handles various line terminators
@@ -203,49 +193,81 @@ public class App {
         }
     }
 
+    // Método criado para exibir diferentes trechos da campanha
     public static void historia(HeroiAbstrato heroiAtual, MonstroAbstrato monstroAtual, int fase) throws InterruptedException{
-        String nomeMonstro = monstroAtual.nome;
+        
+        String nomeMonstro;
+        if (monstroAtual == null) {nomeMonstro = "";}
+        else {nomeMonstro = monstroAtual.nome;}
         String nomeHeroi = heroiAtual.nome;
 
-        if(fase == 1){
-        System.out.println("O primeiro monstro que " + nomeHeroi + " econtra, na porta da frente do castelo é " + nomeMonstro);
-        Thread.sleep(2000);
-        System.out.println("\n");
-        System.out.println(nomeMonstro + ":" + monstroAtual.fraseApresentacao);
-        Thread.sleep(2000);
-        System.out.println("\n");
-        System.out.println("Temendo pela integridade do reino " +nomeHeroi+ " inicia a luta");
+        switch (fase) {
 
-
-        }
-
-        if(fase == 2){
-            System.out.println("O segundo monstro que " + nomeHeroi + " econtra, no corredor da masmorra do castelo é " + nomeMonstro);
-            Thread.sleep(2000);
-            System.out.println("\n");
-            System.out.println(nomeMonstro + ": " + monstroAtual.fraseApresentacao);
-            Thread.sleep(2000);
-            System.out.println("\n");
-            System.out.println("Temendo pela integridade dos moradores do seu querido reino " +nomeHeroi+ " inicia a segunda luta");
-
-
-        }
-
-        if(fase == 3){
-            System.out.println("O terceiro monstro que " + nomeHeroi + " econtra na masmorra do castelo é " + nomeMonstro);
-            Thread.sleep(2000);
-            System.out.println("\n");
-            System.out.println(nomeMonstro + ":" + monstroAtual.fraseApresentacao);
-            Thread.sleep(2000);
-            System.out.println("\n");
-            System.out.println("Com um último suspiro, " +nomeHeroi+ " reúne suas últimas forças e inicia a terceira luta");
-
-
-        }
-        
-
+            case 0: 
+                printaCastelo();
+                System.out.println("|||Introdução|||\n");
+                Thread.sleep(1700);
+                System.out.println("O castelo está em perigo.... precisamos de alguém para nos salvar.");
+                Thread.sleep(1200);
+                System.out.println("O reino de Tchutchuwamako foi tomado pelas mais sombrias critaturas do inferno.");
+                Thread.sleep(1200);
+                System.out.println("Sabendo disso, "+heroiAtual.nome+" muniu-se de suas melhores armas e correu para salvar o castelo\n\n");
+                Thread.sleep(2000);
+                break;
+            case 1:
+                System.out.println("|||Fase: 1/3|||\n");
+                Thread.sleep(1700);
+                System.out.println("O primeiro monstro que " + nomeHeroi + " encontra, na porta da frente do castelo é " + nomeMonstro + ".");
+                Thread.sleep(1200);
+                monstroAtual.apresentacao();
+                Thread.sleep(1200);
+                System.out.println("Temendo pela integridade do reino, " +nomeHeroi+ " inicia a luta.");
+                Thread.sleep(2000);
+                break;
+            case 2:
+                System.out.println("|||Fase: 2/3|||\n");
+                Thread.sleep(1700);
+                System.out.println("O segundo monstro que " + nomeHeroi + " encontra no corredor da masmorra do castelo é " + nomeMonstro + ".");
+                Thread.sleep(1200);
+                monstroAtual.apresentacao();
+                Thread.sleep(1200);
+                System.out.println("Então, pelo bem dos moradores do seu querido reino, " +nomeHeroi+ " inicia a segunda luta.");
+                Thread.sleep(2000);
+                break;
+            case 3:
+                System.out.println("|||Fase: 3/3|||\n");
+                Thread.sleep(1700);
+                System.out.println("O terceiro monstro que " + nomeHeroi + " encontra na masmorra do castelo é " + nomeMonstro + ".");
+                Thread.sleep(1200);
+                monstroAtual.apresentacao();
+                Thread.sleep(1200);
+                System.out.println("Depois de um longo suspiro, " +nomeHeroi+ " reúne suas últimas forças e inicia a batalha final.");
+                Thread.sleep(2000);
+                break;
+            case -1:
+                System.out.println("Ao menos por ora, " + nomeHeroi + " mostrou-se capaz de livrar o reino Tchutchuwamako das legiões infernais.");
+                System.out.println("Os assustados moradores agora podem voltar a dormir em paz...");
+                Thread.sleep(1700);
+                System.out.println("\n\n");
+                System.out.println("            ***************");
+                System.out.println("            *** VITÓRIA ***");
+                System.out.println("            ***************");
+                System.out.println("\n\n");
+                break;
+            case -2:
+                System.out.println("As legiões infernais se apoderam do reino de Tchutchuwamako, dando início a um reinado de terror e trevas...");
+                System.out.println(nomeHeroi+" fracassou em seu juramento de proteção...");
+                Thread.sleep(1700);
+                System.out.println("\n\n");
+                System.out.println("            *****************");
+                System.out.println("            *** GAME OVER ***");
+                System.out.println("            *****************");
+                System.out.println("\n\n");
+                break;
+        }     
     }
 
+    // Método criado para exibir a ilustração do castelo
     public static void printaCastelo(){
                 String image = "\n";
         File imagem = new File("lab01/imagens-texto/castelo.txt");

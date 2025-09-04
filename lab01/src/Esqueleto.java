@@ -3,11 +3,8 @@ import java.util.Random;
 public  class Esqueleto extends MonstroAbstrato  {
     
     public Esqueleto(){
-
-        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA HA HA OSSADA SINISTRA!!!!!", "- Esqueleto: TORNE-SE UM DE NÓS","EU ESQUELETO NÃO TEREI PENA DE TE FAZER UM DE MIM","lab01/imagens-texto/esqueleto.txt");
-
+        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!","lab01/imagens-texto/esqueleto.txt");
     }
-
 
     public void atacar(PersonagemAbstrato alvo){
         
@@ -19,6 +16,7 @@ public  class Esqueleto extends MonstroAbstrato  {
             dano = this.forca;
             alvo.receberDano(dano);
             
+            System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
             if (alvo.estaVivo()) {System.out.println(this.fraseDeEfeito);}
             else {System.out.println(this.fraseVitoria);}
         }

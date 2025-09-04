@@ -3,7 +3,7 @@ import java.util.Random;
 public  class Fantasma extends MonstroAbstrato  {
     
     public Fantasma(){
-        super("Fantasma", 5, 2, 2, "- Fantasma: SINTA A MINHA DOR!!!!!","- Fantasma: COMPARTILHE DA MINHA SOLIDÃO","Somos as almas dos deixados para morrer nas masmorras, queremos VINGANÇA.","lab01/imagens-texto/fantasma.txt");
+        super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt");
 
     }
 
@@ -18,6 +18,7 @@ public  class Fantasma extends MonstroAbstrato  {
             dano = this.forca;
             alvo.receberDano(dano);
             
+            System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
             if (alvo.estaVivo()) {System.out.println(this.fraseDeEfeito);}
             else {System.out.println(this.fraseVitoria);}
         }

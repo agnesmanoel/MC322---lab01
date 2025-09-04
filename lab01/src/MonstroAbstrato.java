@@ -31,4 +31,8 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
         System.out.println(this);
     }
 
+    public void apresentacao () {
+        System.out.println(this.fraseApresentacao);
+    }
+
 }
