@@ -2,10 +2,18 @@ import java.util.Random;
 
 public  class MonarcaEsqueleto extends MonstroAbstrato  {
     
+    /** 
+     * Método construtor de Monarca Esqueleto. O objeto é inicializado com 10 de vida, 15 de força e 
+     * 20 xp concedidos.
+     */
     public MonarcaEsqueleto() {
         super("Monarca Esqueleto", 10, 15, 20, "- Monarca Esqueleto: Sucumba ao meu inferno, criatura infeliz...", "- Monarca Esqueleto: Seus deuses te ESQUECERAM!","- Monarca Esqueleto: Curve-se ao meu império do mal ou morra desejando piedade de sua alma.", "lab01/imagens-texto/monarca-esqueleto.txt");
     }
 
+    /* 
+     * Método concreto de ataque simples. A chance de acerto é 75%.
+     * Já o dano é dado pela força do objeto.
+     */
     public void atacar(PersonagemAbstrato alvo) {
         
         int dano;

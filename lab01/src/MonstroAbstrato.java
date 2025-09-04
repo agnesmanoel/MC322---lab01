@@ -8,6 +8,17 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
     protected String fraseApresentacao; 
     protected String imageURL;
 
+    /**
+     * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
+     * @param n : nome;
+     * @param pv : vida;
+     * @param f : força;
+     * @param xp : experiência concedida ao herói;
+     * @param fraseEfeito : texto para frase dita quando se ataca inimigo;
+     * @param fraseVitoria : texto para frase dita quando se derrota oponente;
+     * @param fraseApresentacao : texto de apresentação do monstro;
+     * @param imageURL : imagem ASCII do personagem.
+     */
     public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria, String fraseApresentacao, String URL) {
         super(n, pv, f, URL);
         this.xpConcedido = xp;
@@ -16,6 +27,10 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
         this.fraseApresentacao = fraseApresentacao; 
     }
     
+    /**
+     * Método de conversão do objeto em string a partir de overide sobre toString() e chamada 
+     * de super.toString() para complementar conversão de PersonagemAbstrato.
+     */
     @Override
     public String toString() {
 
@@ -26,11 +41,17 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
         return resultado;
     }
 
+    /**
+    *  Método adapatado para exibir status de herói.
+    * */
     @Override
     public void exibirStatus() {
         System.out.println(this);
     }
 
+    /**
+    *  Método para exibir apresentação do monstro.
+    * */
     public void apresentacao () {
         System.out.println(this.fraseApresentacao);
     }

@@ -2,12 +2,19 @@ import java.util.Random;
 
 public  class Fantasma extends MonstroAbstrato  {
     
+    /** 
+     * Método construtor de Fantasma. O objeto é inicializado com 5 de vida, 2 de força e 
+     * 2 xp concedidos.
+     */
     public Fantasma(){
         super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt");
 
     }
 
-
+    /* 
+     * Método concreto de ataque simples. A chance de acerto é 60%.
+     * Já o dano é dado pela força do objeto.
+     */
     public void atacar(PersonagemAbstrato alvo){
         
         int dano;

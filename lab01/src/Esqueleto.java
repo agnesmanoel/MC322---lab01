@@ -2,10 +2,18 @@ import java.util.Random;
 
 public  class Esqueleto extends MonstroAbstrato  {
     
+    /** 
+     * Método construtor de Esqueleto. O objeto é inicializado com 10 de vida, 5 de força e 
+     * 7 xp concedidos.
+     */
     public Esqueleto(){
         super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!","lab01/imagens-texto/esqueleto.txt");
     }
 
+    /* 
+     * Método concreto de ataque simples. A chance de acerto é 60%.
+     * Já o dano é dado pela força do objeto.
+     */
     public void atacar(PersonagemAbstrato alvo){
         
         int dano;

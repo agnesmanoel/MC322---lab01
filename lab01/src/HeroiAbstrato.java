@@ -5,6 +5,15 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
     protected  String fraseDeEfeito;
     protected  String fraseVitoria;
 
+    /**
+     * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
+     * @param n : nome;
+     * @param pv : vida;
+     * @param f : força;
+     * @param fraseEfeito : texto para frase dita quando se ataca inimigo;
+     * @param fraseVitoria : texto para frase dita quando se usa a habilidade especial;
+     * @param imageURL : imagem ASCII do personagem.
+     */
     public HeroiAbstrato(String n, int pv, int f, String fraseEfeito, String fraseVitoria, String imageURL) {
         super(n, pv, f, imageURL);
         this.nivel = 0;
@@ -13,14 +22,23 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         this.fraseVitoria = fraseVitoria;
     }
 
-    public void ganhaNivel() {
+    /**
+     * Método para aumentar o nível do herói. A upgrade, ele recebe incremento de vida 
+     * igual ao novo nível alcançado, e mais uma unidade de força.
+     */
+    protected  void ganhaNivel() {
         this.nivel ++;
         this.PontosDeVida += this.nivel;
         this.forca ++;
-        System.out.println("*** SUBIU DE NÍVEL : +" + 2 + " Vida " + " +1 Força ***");
+        System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força ***");
     }
 
-    public void ganhaExperiencia(int xp) {
+    /**
+     * Método para adquirir experiência após vitória sobre inimigo. Caso se esteja no nível 0, 
+     * são necessários 2 xp para upgrade; no nível 1, são 7 xp; e para o nível 2, são 20 xp.
+     * @param xp : experiência concedida pelo inimigo.
+     */
+    protected void ganhaExperiencia(int xp) {
         
         this.experiencia += xp;
 
@@ -48,6 +66,10 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         }
     }
 
+    /**
+     * Método de conversão do objeto em string a partir de overide sobre toString() e chamada 
+     * de super.toString() para complementar conversão de PersonagemAbstrato.
+     */
     @Override
     public String toString() {
 
@@ -58,11 +80,18 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         return resultado;
     }
 
+    /**
+    *  Método adapatado para exibir status de herói.
+    * */
     @Override
     public void exibirStatus() {
         System.out.println(this);
     }
 
+    /**
+     * Método abstrato de habilidade especial.
+     * @param alvo : oponente em combate;
+     */
     public abstract void usarHabilidadeEspecial(PersonagemAbstrato alvo);
 
 }

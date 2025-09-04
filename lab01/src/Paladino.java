@@ -4,12 +4,18 @@ public class Paladino extends HeroiAbstrato{
     
     private int AuraDaJustica; 
 
+    /** 
+     * Método construtor de Paladino. O objeto é inicializado com 12 de vida e 9 de força.
+     */
     public Paladino() {
-
         super("Paladino", 12, 9, "- Paladino: Os meus deuses ajudam os justos!", "- Paladino: Que sua alma perturbada descanse enfim...","lab01/imagens-texto/paladino.txt");
         this.AuraDaJustica = 1;
     }
 
+    /* 
+     * Método concreto de ataque simples. A chance de acerto é 70% + (10 * nível atual)%
+     * Já o dano é dado pela força do objeto.
+     */
     public void atacar(PersonagemAbstrato alvo) {
 
         MonstroAbstrato monstro;
@@ -26,7 +32,7 @@ public class Paladino extends HeroiAbstrato{
         int numAleat = random.nextInt(0,100);
         int extra = 10 * this.nivel;
 
-        if (numAleat + extra > 50) {
+        if (numAleat + extra > 30) {
             dano = this.forca;
             monstro.receberDano(dano);
 
@@ -40,6 +46,10 @@ public class Paladino extends HeroiAbstrato{
         else {System.out.println("\r" + this.nome + ": *** ERROU O ATAQUE ***"); }
     }
 
+    /* 
+     * Método concreto de habilidade especial. A chance de acerto é 30% + (5 * (nível atual + 1))% .
+     * Já o dano final é composto por força + (5 * AuraDaJustiça).
+     */
     public void usarHabilidadeEspecial(PersonagemAbstrato alvo) {
         
         MonstroAbstrato monstro;
@@ -69,6 +79,15 @@ public class Paladino extends HeroiAbstrato{
 
         else { System.out.println("\r" + this.nome + ": *** ERROU A HABILIDADE ESPECIAL ***"); }
 
+    }
+
+    /**
+     * Método aprimorado para incrementar habilidade especial a cada nível completado.
+     */
+    @Override
+    protected void ganhaNivel() {
+        super.ganhaNivel();
+        this.AuraDaJustica ++;
     }
 
 }

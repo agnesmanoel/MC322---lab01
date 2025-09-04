@@ -198,8 +198,8 @@ public class App {
         
         String nomeMonstro;
         if (monstroAtual == null) {nomeMonstro = "";}
-        else {nomeMonstro = monstroAtual.nome;}
-        String nomeHeroi = heroiAtual.nome;
+        else {nomeMonstro = monstroAtual.getNome();}
+        String nomeHeroi = heroiAtual.getNome();
 
         switch (fase) {
 
@@ -211,7 +211,7 @@ public class App {
                 Thread.sleep(1200);
                 System.out.println("O reino de Tchutchuwamako foi tomado pelas mais sombrias critaturas do inferno.");
                 Thread.sleep(1200);
-                System.out.println("Sabendo disso, "+heroiAtual.nome+" muniu-se de suas melhores armas e correu para salvar o castelo\n\n");
+                System.out.println("Sabendo disso, "+heroiAtual.getNome()+" muniu-se de suas melhores armas e correu para salvar o castelo\n\n");
                 Thread.sleep(2000);
                 break;
             case 1:

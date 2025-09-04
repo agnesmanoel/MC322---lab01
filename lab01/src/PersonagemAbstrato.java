@@ -9,6 +9,13 @@ abstract class PersonagemAbstrato {
     protected  int forca;
     protected String imagemURL;
 
+    /**
+     * Método construtor abstrato
+     * @param n : nome;
+     * @param pv : vida;
+     * @param f : força;
+     * @param URL : imagem ASCII do personagem.
+     */
     public PersonagemAbstrato(String n, int pv, int f, String URL) {
         this.nome = n;
         this.PontosDeVida = pv;
@@ -16,10 +23,17 @@ abstract class PersonagemAbstrato {
         this.imagemURL = URL;
     }
 
+    /**
+     *  Método para receber dano e, então, diminuir a vida do personagem. O método recebe:
+     *      dano.
+    * */
     public void receberDano(int dano) {
         this.PontosDeVida = Math.max(this.PontosDeVida - dano, 0);
     }
 
+    /** 
+     * Método de conversão do objeto em uma String através de override em toString.
+     * */
     @Override
     public String toString() {
 
@@ -30,6 +44,9 @@ abstract class PersonagemAbstrato {
         return resultado;
     }
 
+    /**
+     * Método para retornar imagem associada a um personagem.
+     * */
     public String getFileImage(){
         String image = "\n";
         File imagem = new File(this.imagemURL);
@@ -50,24 +67,30 @@ abstract class PersonagemAbstrato {
 
     }
 
-    public void printImagem(){
-        System.out.println(getFileImage());
-    }
-
-
-
+    /**
+    *  Método inicial para exibir status de personagem.
+    * */
     public void exibirStatus() {
        System.out.println(this);
     }
 
+    /**
+     *  Método getter para retornar o nome do personagem.
+    * */
     public  String getNome(){
         return this.nome;
     }
 
+    /**
+     * Método para checar se o personagem está vivo.
+     */
     public boolean estaVivo(){
         return this.PontosDeVida > 0;
     }
 
+    /**
+     * Método abstrato ataque simples.
+     */
     public abstract void atacar(PersonagemAbstrato alvo);
 
 }
