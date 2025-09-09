@@ -44,8 +44,9 @@ public class Feiticeira extends HeroiAbstrato {
 
             if (monstro.PontosDeVida <= 0) {
                 ganhaExperiencia(monstro.xpConcedido);
-                if(monstro.arma.minNivel <= this.nivel){
-                    this.equiparArma(monstro.arma);
+                Arma armaLargada = monstro.largaArma();
+                if(armaLargada.minNivel <= this.nivel){
+                    this.equiparArma(armaLargada);
                 }
             }
 
@@ -75,7 +76,7 @@ public class Feiticeira extends HeroiAbstrato {
         int numAleat = random.nextInt(0,100);
         int dano = (this.nivel + 3) * this.PocaoAstral;
 
-        int acaso = 10*sorte/25;
+        int acaso = 10*this.sorte/25;
         if (this.sorte <= 40) {acaso = - acaso;}
 
         if (numAleat + acaso > 60 && this.PontosDeVida <= 4 * (this.nivel + 2)) {
@@ -85,8 +86,13 @@ public class Feiticeira extends HeroiAbstrato {
             System.out.println(this.nome + ": *** ACERTOU A HABILIDADE ESPECIAL ***");
             System.out.println(this.fraseDeEfeito);
 
-            if (monstro.PontosDeVida <= 0) { ganhaExperiencia(monstro.xpConcedido); }
-            
+            if (monstro.PontosDeVida <= 0) {
+                ganhaExperiencia(monstro.xpConcedido);
+                Arma armaLargada = monstro.largaArma();
+                if(armaLargada.minNivel <= this.nivel){
+                    this.equiparArma(armaLargada);
+                }
+            }
         }
 
         else { System.out.println("\r" + this.nome + ": *** ERROU A HABILIDADE ESPECIAL ***"); }

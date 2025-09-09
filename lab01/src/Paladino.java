@@ -44,8 +44,9 @@ public class Paladino extends HeroiAbstrato{
 
             if (monstro.PontosDeVida <= 0) {
                 ganhaExperiencia(monstro.xpConcedido);
-                if(monstro.arma.minNivel <= this.nivel){
-                    this.equiparArma(monstro.arma);
+                Arma armaLargada = monstro.largaArma();
+                if(armaLargada.minNivel <= this.nivel){
+                    this.equiparArma(armaLargada);
                 }
             }
             
@@ -74,9 +75,8 @@ public class Paladino extends HeroiAbstrato{
         int numAleat = random.nextInt(0,100);
         int extra = 5 * this.AuraDaJustica;
         
-        int acaso;
-        if (this.sorte > 40) {acaso = 10*sorte/25;}
-        else {acaso =  - 10*sorte/25;}
+        int acaso = 10*this.sorte/25;
+        if (this.sorte <= 40) {acaso = - acaso;}
 
         if (numAleat + 5 * (this.nivel + 1) + acaso > 70) {
             dano = this.forca + extra;
@@ -85,7 +85,13 @@ public class Paladino extends HeroiAbstrato{
             System.out.println(this.nome + ": *** ACERTOU A HABILIDADE ESPECIAL ***");
             System.out.println(this.fraseVitoria);
             
-            if (! monstro.estaVivo()) { this.ganhaExperiencia(monstro.xpConcedido); }
+            if (monstro.PontosDeVida <= 0) {
+                ganhaExperiencia(monstro.xpConcedido);
+                Arma armaLargada = monstro.largaArma();
+                if(armaLargada.minNivel <= this.nivel){
+                    this.equiparArma(armaLargada);
+                }
+            }
    
         }
 

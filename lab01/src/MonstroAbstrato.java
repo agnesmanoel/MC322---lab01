@@ -1,4 +1,4 @@
-
+import java.util.Random;
 
 abstract class MonstroAbstrato extends PersonagemAbstrato{
     
@@ -7,6 +7,7 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
     protected String fraseVitoria;
     protected String fraseApresentacao; 
     protected String imageURL;
+    protected Arma listaDeArmasParaLargar[];
 
     /**
      * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
@@ -25,7 +26,8 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
         this.xpConcedido = xp;
         this.fraseDeEfeito = fraseEfeito;
         this.fraseVitoria = fraseVitoria;
-        this.fraseApresentacao = fraseApresentacao; 
+        this.fraseApresentacao = fraseApresentacao;
+        this.listaDeArmasParaLargar = new Arma[3]; 
     }
     
     /**
@@ -55,6 +57,13 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
     * */
     public void apresentacao () {
         System.out.println(this.fraseApresentacao);
+    }
+
+    protected Arma largaArma() {
+        Random random = new Random();
+        int numAleat = random.nextInt(0,3);
+
+        return this.listaDeArmasParaLargar[numAleat];
     }
 
 }

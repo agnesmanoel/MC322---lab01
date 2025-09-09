@@ -8,6 +8,9 @@ public  class Esqueleto extends MonstroAbstrato  {
      */
     public Esqueleto(){
         super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!", "lab01/imagens-texto/esqueleto.txt", new Amuleto());
+        this.listaDeArmasParaLargar[0] = new Punhal();
+        this.listaDeArmasParaLargar[1] = new Amuleto();
+        this.listaDeArmasParaLargar[2] = new Pedra();
     }
 
     /* 

@@ -8,6 +8,9 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
      */
     public MonarcaEsqueleto() {
         super("Monarca Esqueleto", 10, 15, 20, "- Monarca Esqueleto: Sucumba ao meu inferno, criatura infeliz...", "- Monarca Esqueleto: Seus deuses te ESQUECERAM!","- Monarca Esqueleto: Curve-se ao meu império do mal ou morra desejando piedade de sua alma.", "lab01/imagens-texto/monarca-esqueleto.txt", new Coroa());
+        this.listaDeArmasParaLargar[0] = new Coroa();
+        this.listaDeArmasParaLargar[1] = new Amuleto();
+        this.listaDeArmasParaLargar[2] = new Amuleto();
     }
 
     /* 
