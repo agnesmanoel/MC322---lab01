@@ -7,7 +7,7 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
      * 20 xp concedidos.
      */
     public MonarcaEsqueleto() {
-        super("Monarca Esqueleto", 10, 15, 20, "- Monarca Esqueleto: Sucumba ao meu inferno, criatura infeliz...", "- Monarca Esqueleto: Seus deuses te ESQUECERAM!","- Monarca Esqueleto: Curve-se ao meu império do mal ou morra desejando piedade de sua alma.", "lab01/imagens-texto/monarca-esqueleto.txt");
+        super("Monarca Esqueleto", 10, 15, 20, "- Monarca Esqueleto: Sucumba ao meu inferno, criatura infeliz...", "- Monarca Esqueleto: Seus deuses te ESQUECERAM!","- Monarca Esqueleto: Curve-se ao meu império do mal ou morra desejando piedade de sua alma.", "lab01/imagens-texto/monarca-esqueleto.txt", new Coroa());
     }
 
     /* 
@@ -21,7 +21,7 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
         int numAleat = random.nextInt(0,100);
 
         if (numAleat<75) {
-            dano = this.forca;
+            dano = this.forca + this.arma.dano;
             alvo.receberDano(dano);
 
             System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***"); 

@@ -1,9 +1,13 @@
+import java.util.Random;
+
 abstract class HeroiAbstrato extends PersonagemAbstrato {
     
     protected int nivel;
     protected int experiencia;
     protected  String fraseDeEfeito;
     protected  String fraseVitoria;
+    protected int expProximoNivel;
+    protected int sorte;
 
     /**
      * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
@@ -15,11 +19,14 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
      * @param imageURL : imagem ASCII do personagem.
      */
     public HeroiAbstrato(String n, int pv, int f, String fraseEfeito, String fraseVitoria, String imageURL) {
-        super(n, pv, f, imageURL);
+        super(n, pv, f, imageURL, null);
         this.nivel = 0;
         this.experiencia = 0;
         this.fraseDeEfeito = fraseEfeito;
         this.fraseVitoria = fraseVitoria;
+        this.expProximoNivel = 2;
+        Random random = new Random();
+        this.sorte = random.nextInt(0,100);
     }
 
     /**
@@ -30,7 +37,17 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         this.nivel ++;
         this.PontosDeVida += this.nivel;
         this.forca ++;
-        System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força ***");
+        Random random = new Random();
+        this.sorte = random.nextInt(0,100);
+
+        if (this.sorte > 40) {
+            System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força +"+ this.sorte +"% Benção dos Deuses***");
+        }
+        else {
+            System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força +"+ this.sorte +"% Madição Antiga***");
+        }
+        
+        
     }
 
     /**
@@ -41,28 +58,38 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
     protected void ganhaExperiencia(int xp) {
         
         this.experiencia += xp;
-
+        
         switch(this.nivel) {
             case 0: 
                 if (this.experiencia >= 2) {
                     this.experiencia = 0;
+                    this.expProximoNivel = 5;
                     ganhaNivel();
                 }
                 break;
             
             case 1:
-                if (this.experiencia >= 7) {
+                if (this.experiencia >= 5) {
                     this.experiencia = 0;
+                    this.expProximoNivel = 10;
                     ganhaNivel();
                 }
                 break;
 
             case 2:
-                if (this.experiencia >= 20) {
+                if (this.experiencia >= 10) {
                     this.experiencia = 0;
+                    this.expProximoNivel = 15;
                     ganhaNivel();
                 }
                 break;
+            default:
+                if (this.experiencia >= 15) {
+                        this.experiencia = 0;
+                        this.expProximoNivel = 15;
+                        ganhaNivel();
+                    }
+                    break;
         }
     }
 
@@ -94,4 +121,10 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
      */
     public abstract void usarHabilidadeEspecial(PersonagemAbstrato alvo);
 
+    protected void equiparArma(Arma novaArma) {
+        if (this.arma == null || this.arma.dano <= novaArma.dano) {
+            this.arma = novaArma;
+            System.out.println("*** ENCONTROU " + novaArma.intro + " ***");
+        }
+    }
 }

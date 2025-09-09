@@ -7,7 +7,7 @@ public  class Esqueleto extends MonstroAbstrato  {
      * 7 xp concedidos.
      */
     public Esqueleto(){
-        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!","lab01/imagens-texto/esqueleto.txt");
+        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!", "lab01/imagens-texto/esqueleto.txt", new Amuleto());
     }
 
     /* 
@@ -21,7 +21,7 @@ public  class Esqueleto extends MonstroAbstrato  {
         int numAleat = random.nextInt(0,100);
 
         if (numAleat<60) {
-            dano = this.forca;
+            dano = this.forca+ this.arma.dano;
             alvo.receberDano(dano);
             
             System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");

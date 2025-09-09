@@ -18,9 +18,10 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
      * @param fraseVitoria : texto para frase dita quando se derrota oponente;
      * @param fraseApresentacao : texto de apresentação do monstro;
      * @param imageURL : imagem ASCII do personagem.
+     * @param arma : arma do personagem.
      */
-    public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria, String fraseApresentacao, String URL) {
-        super(n, pv, f, URL);
+    public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria, String fraseApresentacao, String URL, Arma arma) {
+        super(n, pv, f, URL, arma);
         this.xpConcedido = xp;
         this.fraseDeEfeito = fraseEfeito;
         this.fraseVitoria = fraseVitoria;

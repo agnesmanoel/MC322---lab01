@@ -8,6 +8,7 @@ abstract class PersonagemAbstrato {
     protected  int PontosDeVida;
     protected  int forca;
     protected String imagemURL;
+    protected Arma arma;
 
     /**
      * Método construtor abstrato
@@ -16,11 +17,12 @@ abstract class PersonagemAbstrato {
      * @param f : força;
      * @param URL : imagem ASCII do personagem.
      */
-    public PersonagemAbstrato(String n, int pv, int f, String URL) {
+    public PersonagemAbstrato(String n, int pv, int f, String URL, Arma arma) {
         this.nome = n;
         this.PontosDeVida = pv;
         this.forca = f;
         this.imagemURL = URL;
+        this.arma = arma;
     }
 
     /**
@@ -38,9 +40,13 @@ abstract class PersonagemAbstrato {
     public String toString() {
 
        String resultado = "Nome: "+this.nome+"\n";
-       resultado = resultado+"Vida: "+this.PontosDeVida+"\n";
-       resultado = resultado+"Força: "+this.forca+"\n";
 
+       if (this.estaVivo()) {resultado = resultado+"Vida: "+this.PontosDeVida+"\n";}
+       else {resultado = resultado+"Vida: * MORTO *\n";}
+       
+       if (this.arma == null || !this.estaVivo()) { resultado = resultado+"Força: "+this.forca+"\n"; }
+       else { resultado = resultado+"Força: "+this.forca+" (+" + this.arma.dano + ")"+"\n"; }
+       
         return resultado;
     }
 

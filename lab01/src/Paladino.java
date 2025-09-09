@@ -30,7 +30,10 @@ public class Paladino extends HeroiAbstrato{
         int dano;
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
-        int extra = 10 * this.nivel;
+        
+        int extra;
+        if (this.arma == null) {extra = 10 * this.nivel;}
+        else {extra = 10 * this.nivel + this.arma.dano;}
 
         if (numAleat + extra > 30) {
             dano = this.forca;
@@ -39,7 +42,12 @@ public class Paladino extends HeroiAbstrato{
             System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
             System.out.println(this.fraseDeEfeito);
 
-            if (! monstro.estaVivo()) { this.ganhaExperiencia(monstro.xpConcedido); }
+            if (monstro.PontosDeVida <= 0) {
+                ganhaExperiencia(monstro.xpConcedido);
+                if(monstro.arma.minNivel <= this.nivel){
+                    this.equiparArma(monstro.arma);
+                }
+            }
             
         }
 
@@ -65,8 +73,12 @@ public class Paladino extends HeroiAbstrato{
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
         int extra = 5 * this.AuraDaJustica;
+        
+        int acaso;
+        if (this.sorte > 40) {acaso = 10*sorte/25;}
+        else {acaso =  - 10*sorte/25;}
 
-        if (numAleat + 5 * (this.nivel + 1) > 70) {
+        if (numAleat + 5 * (this.nivel + 1) + acaso > 70) {
             dano = this.forca + extra;
             monstro.receberDano(dano);
             

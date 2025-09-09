@@ -30,7 +30,10 @@ public class Feiticeira extends HeroiAbstrato {
         int dano;
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
-        int extra = 10 * this.nivel;
+        
+        int extra;
+        if (this.arma == null) {extra = 10 * this.nivel;}
+        else {extra = 10 * this.nivel + this.arma.dano;}
 
         if (numAleat + extra > 45) {
             dano = this.forca;
@@ -39,9 +42,13 @@ public class Feiticeira extends HeroiAbstrato {
             System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
             System.out.println(this.fraseDeEfeito);
 
-            if (monstro.PontosDeVida <= 0) { ganhaExperiencia(monstro.xpConcedido); }
+            if (monstro.PontosDeVida <= 0) {
+                ganhaExperiencia(monstro.xpConcedido);
+                if(monstro.arma.minNivel <= this.nivel){
+                    this.equiparArma(monstro.arma);
+                }
+            }
 
-            
         }
         
         else {System.out.println("\r" + this.nome + ": *** ERROU O ATAQUE ***"); }
@@ -68,7 +75,10 @@ public class Feiticeira extends HeroiAbstrato {
         int numAleat = random.nextInt(0,100);
         int dano = (this.nivel + 3) * this.PocaoAstral;
 
-        if (numAleat > 60 && this.PontosDeVida <= 4 * (this.nivel + 2)) {
+        int acaso = 10*sorte/25;
+        if (this.sorte <= 40) {acaso = - acaso;}
+
+        if (numAleat + acaso > 60 && this.PontosDeVida <= 4 * (this.nivel + 2)) {
             monstro.receberDano(dano);
             this.PontosDeVida += dano;
 
