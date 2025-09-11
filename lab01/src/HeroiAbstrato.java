@@ -41,10 +41,10 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         this.sorte = random.nextInt(0,100);
 
         if (this.sorte > 40) {
-            System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força +"+ this.sorte +"% Benção dos Deuses ***");
+            System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força  +"+ this.sorte +"% Benção dos Deuses ***");
         }
         else {
-            System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força +"+ this.sorte +"% Madição Antiga ***");
+            System.out.println("*** SUBIU DE NÍVEL : +" + this.nivel + " Vida " + " +1 Força  +"+ this.sorte +"% Madição Antiga ***");
         }
         
         

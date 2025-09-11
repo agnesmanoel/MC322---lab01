@@ -28,7 +28,7 @@ public  class Fantasma extends MonstroAbstrato  {
             dano = this.forca+ this.arma.dano;
             alvo.receberDano(dano);
             
-            System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
+            System.out.println(this.nome + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***");
             if (alvo.estaVivo()) {System.out.println(this.fraseDeEfeito);}
             else {System.out.println(this.fraseVitoria);}
         }

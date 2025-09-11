@@ -31,15 +31,15 @@ public class Paladino extends HeroiAbstrato{
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
         
-        int extra;
-        if (this.arma == null) {extra = 10 * this.nivel;}
-        else {extra = 10 * this.nivel + this.arma.dano;}
+        int extra = 10 * this.nivel;
+        if (this.arma == null) {dano = 0;}
+        else {dano = this.arma.dano;}
 
         if (numAleat + extra > 30) {
-            dano = this.forca;
+            dano += this.forca;
             monstro.receberDano(dano);
 
-            System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
+            System.out.println(this.nome + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***");
             System.out.println(this.fraseDeEfeito);
 
             if (monstro.PontosDeVida <= 0) {
@@ -74,15 +74,18 @@ public class Paladino extends HeroiAbstrato{
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
         int extra = 5 * this.AuraDaJustica;
+
+        if (this.arma == null) {dano = 0;}
+        else {dano = this.arma.dano;}
         
         int acaso = 10*this.sorte/25;
         if (this.sorte <= 40) {acaso = - acaso;}
 
         if (numAleat + 5 * (this.nivel + 1) + acaso > 70) {
-            dano = this.forca + extra;
+            dano += this.forca + extra;
             monstro.receberDano(dano);
             
-            System.out.println(this.nome + ": *** ACERTOU A HABILIDADE ESPECIAL ***");
+            System.out.println(this.nome + ": *** ACERTOU A HABILIDADE ESPECIAL : " + dano + " Dano ***");
             System.out.println(this.fraseVitoria);
             
             if (monstro.PontosDeVida <= 0) {
