@@ -1,52 +1,21 @@
   // Método criado para exibir diferentes trechos da campanha
 
-import java.util.Random;
-
 public class Fase {
 
     int nivel;
     MonstroAbstrato[] listaMonstros;
     String descricao;
 
-    public Fase(int nivel,String descricao) {
+    public Fase(int nivel, MonstroAbstrato[] vetorMonstro,String descricao) {
       this.nivel = nivel;
       this.descricao= descricao;
-      this.listaMonstros = null;   
+      this.listaMonstros = vetorMonstro;   
     }
 
-
-    private MonstroAbstrato[] geraListaMonstro(int nivel){
-      int quantidadeMonstros = 2* nivel;
-      this.listaMonstros = new MonstroAbstrato[quantidadeMonstros];
-      Random random = new Random();
-
-      switch (nivel) {
-        case 1:
-        case 2:
-          
-          listaMonstros[0] = new Fantasma();
-
-          for (int i=1; i<quantidadeMonstros; i++) {
-            Boolean numAleat = random.nextBoolean();
-            if(numAleat){
-              listaMonstros[i] = new Fantasma();
-            } else {
-              listaMonstros[i] = new Esqueleto();
-            }}
-        break;
-
-        case 3:
-        case 4:
-        MonstroAbstrato fantasma1 = new Fantasma();
-
-      }
-
+    @Override
+    public String toString() {
+        return this.descricao;
     }
-
-
-
-
-
 
   }
   
