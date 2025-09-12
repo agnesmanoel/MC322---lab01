@@ -8,6 +8,9 @@ public  class Fantasma extends MonstroAbstrato  {
      */
     public Fantasma(){
         super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt", new Punhal());
+        this.listaDeArmasParaLargar[0] = new Punhal();
+        this.listaDeArmasParaLargar[1] = new Pedra();
+        this.listaDeArmasParaLargar[2] = new Pedra();
 
     }
 
@@ -25,7 +28,7 @@ public  class Fantasma extends MonstroAbstrato  {
             dano = this.forca+ this.arma.dano;
             alvo.receberDano(dano);
             
-            System.out.println(this.nome + ": *** ACERTOU O ATAQUE ***");
+            System.out.println(this.nome + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***");
             if (alvo.estaVivo()) {System.out.println(this.fraseDeEfeito);}
             else {System.out.println(this.fraseVitoria);}
         }
