@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Paladino extends HeroiAbstrato{
     
-    private int AuraDaJustica; 
+    protected int AuraDaJustica; 
 
     /** 
      * Método construtor de Paladino. O objeto é inicializado com 12 de vida e 9 de força.
@@ -110,5 +110,7 @@ public class Paladino extends HeroiAbstrato{
         super.ganhaNivel();
         this.AuraDaJustica ++;
     }
+
+    
 
 }

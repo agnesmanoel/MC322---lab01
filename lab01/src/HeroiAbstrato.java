@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 abstract class HeroiAbstrato extends PersonagemAbstrato {
@@ -8,6 +10,7 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
     protected  String fraseVitoria;
     protected int expProximoNivel;
     protected int sorte;
+    protected List<iacaoDeCombate> listaCombates = new ArrayList<>();
 
     /**
      * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
@@ -27,6 +30,21 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         this.expProximoNivel = 2;
         Random random = new Random();
         this.sorte = random.nextInt(0,100);
+        List<iacaoDeCombate> listaCombates = new ArrayList<>();
+        popularLista();
+
+    }
+
+    private void popularLista(){
+        AtaqueHeroiSimples objetoAtaque = new AtaqueHeroiSimples();
+        AtaqueAuraDaJustiça objetoAtaqueAuraDaJustiça = new AtaqueAuraDaJustiça();
+        AtaquePocaoAstral objetoAtaquePocaoAstral = new AtaquePocaoAstral();
+
+
+        this.listaCombates.add(objetoAtaque);
+        this.listaCombates.add(objetoAtaqueAuraDaJustiça);
+        this.listaCombates.add(objetoAtaquePocaoAstral);
+
     }
 
     /**
@@ -118,8 +136,10 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
     /**
      * Método abstrato de habilidade especial.
      * @param alvo : oponente em combate;
-     */
-    public abstract void usarHabilidadeEspecial(PersonagemAbstrato alvo);
+     
+    //public abstract void usarHabilidadeEspecial(iCombatente alvo);*/
+
+    public abstract iacaoDeCombate escolherAcao(iCombatente alvo);
 
     protected void equiparArma(Arma novaArma) {
         if (this.arma == null || this.arma.dano <= novaArma.dano) {

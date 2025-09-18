@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-abstract class PersonagemAbstrato {
+abstract class PersonagemAbstrato implements iCombatente{
     
     protected  String nome;
     protected  int PontosDeVida;
@@ -31,6 +31,10 @@ abstract class PersonagemAbstrato {
     * */
     public void receberDano(int dano) {
         this.PontosDeVida = Math.max(this.PontosDeVida - dano, 0);
+    }
+
+    public void receberCura(int cura) {
+        this.PontosDeVida = this.PontosDeVida += cura;
     }
 
     /** 
