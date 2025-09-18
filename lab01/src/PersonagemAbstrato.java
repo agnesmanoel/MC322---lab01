@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 abstract class PersonagemAbstrato implements iCombatente{
@@ -9,6 +11,8 @@ abstract class PersonagemAbstrato implements iCombatente{
     protected  int forca;
     protected String imagemURL;
     protected Arma arma;
+    protected List<iacaoDeCombate> listaCombates = new ArrayList<>();
+
 
     /**
      * Método construtor abstrato
@@ -97,10 +101,5 @@ abstract class PersonagemAbstrato implements iCombatente{
     public boolean estaVivo(){
         return this.PontosDeVida > 0;
     }
-
-    /**
-     * Método abstrato ataque simples.
-     */
-    public abstract void atacar(PersonagemAbstrato alvo);
 
 }

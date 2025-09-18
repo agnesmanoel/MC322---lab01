@@ -10,8 +10,7 @@ public class AtaqueAuraDaJustiça implements iacaoDeCombate {
             int dano;
             Random random = new Random();
             int numAleat = random.nextInt(0, 100);
-            int extra = 5 * 1; // tava assim antes -> heroi.AuraDaJustica; arrumar dps
-
+            int extra = 5 * heroi.fatorEspecial;
             if (heroi.arma == null) {
                 dano = 0;
             } else {
@@ -28,7 +27,7 @@ public class AtaqueAuraDaJustiça implements iacaoDeCombate {
                 alvo.receberDano(dano);
 
                 System.out.println(
-                        heroi.nome + ": *** ACERTOU A HABILIDADE ESPECIAL : " + dano + " Dano ***");
+                        heroi.nome + ": *** ACERTOU A HABILIDADE ESPECIAL AURA DA JUSTIÇA: " + dano + " Dano ***");
                 System.out.println(heroi.fraseVitoria);
 
                 if (monstro.PontosDeVida <= 0) {

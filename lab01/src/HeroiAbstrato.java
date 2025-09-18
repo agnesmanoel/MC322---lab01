@@ -10,7 +10,7 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
     protected  String fraseVitoria;
     protected int expProximoNivel;
     protected int sorte;
-    protected List<iacaoDeCombate> listaCombates = new ArrayList<>();
+    protected int fatorEspecial;
 
     /**
      * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
@@ -30,6 +30,7 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         this.expProximoNivel = 2;
         Random random = new Random();
         this.sorte = random.nextInt(0,100);
+        this.fatorEspecial = 1;
         List<iacaoDeCombate> listaCombates = new ArrayList<>();
 
     }
@@ -42,6 +43,7 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         this.nivel ++;
         this.PontosDeVida += this.nivel;
         this.forca ++;
+        this.fatorEspecial++;
         Random random = new Random();
         this.sorte = random.nextInt(0,100);
 

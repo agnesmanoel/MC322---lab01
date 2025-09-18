@@ -33,8 +33,11 @@ public class AtaqueHeroiSimples implements iacaoDeCombate {
                         usuarioHeroi.equiparArma(armaLargada);
                     }
                 }
+                
+            } else {
+                    System.out.println("\r" + usuarioHeroi.nome + ": *** ERROU ATAQUE***");
+                }
 
-            }
         } 
 
     }
