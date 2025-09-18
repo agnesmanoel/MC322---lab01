@@ -73,7 +73,6 @@ public class Main {
                     // Exibe-se o respectivo turno
                     System.out.println("| Turno: " + contRound + " |\r\n");
                     Thread.sleep(800);
-
                     // Ataque do herói
                     iacaoDeCombate ataque = personagemAtual.escolherAcao(monstroAtual);
                     ataque.executar(personagemAtual,monstroAtual);
