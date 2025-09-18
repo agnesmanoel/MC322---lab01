@@ -1,4 +1,3 @@
 public interface iGeradorDeFases {
-    Fase[] gerar(int quantidadeDeFases);
-
+    iFase[] gerar(int quantidadeDeFases);
 }

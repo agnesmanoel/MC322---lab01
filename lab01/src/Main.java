@@ -16,6 +16,9 @@ public class Main {
         if(bool){
             personagemAtual = personagemFeiticeira;
         }
+
+        //Instanciando ConstrutorDeCenarioFixo
+        ConstrutorDeCenarioFixo geradorFases = new ConstrutorDeCenarioFixo(personagemAtual);
         
         // Variável aleatória responsável por definir o tipo de ataque (normal ou habilidade especial) 
         // utilizado pelo personagem.
@@ -26,32 +29,38 @@ public class Main {
 
         // Lista de fases
         int nFases = 2; // Número de fases
-        Fase FaseAtual;
-        Fase[] listaFases = ConstrutorDeCenario.gerarFases(nFases, personagemAtual.getNome());        
-
+        // Fase FaseAtual;
+        // Fase[] listaFases = ConstrutorDeCenario.gerarFases(nFases, personagemAtual.getNome());  
+        FaseCombate FaseAtual;
+        iFase[] listaFases = geradorFases.gerar(nFases);
+     
         // Exibe a introdução da campanha
-        ConstrutorDeCenario.Intro(personagemAtual.getNome());
+        // ConstrutorDeCenario.Intro(personagemAtual.getNome());
+        geradorFases.Intro();
         Thread.sleep(1800);
 
         // Loop principal percorrendo a lista de fases
         for (int contFase = 0; contFase < nFases; contFase++) {
 
-            FaseAtual = listaFases[contFase];
+            FaseAtual = (FaseCombate) listaFases[contFase];
             MonstroAbstrato monstroAtual;
 
-            System.out.println(FaseAtual);
+            // System.out.println(FaseAtual);
+            FaseAtual.iniciar(personagemAtual);
             Thread.sleep(1500);
-            ConstrutorDeCenario.Status(personagemAtual);
+            // ConstrutorDeCenario.Status(personagemAtual);
+            geradorFases.Status(personagemAtual);
             Thread.sleep(900);
             
             // Loop interno percorrendo a lista de monstros
-            for (int contMonstro = 0; contMonstro < FaseAtual.listaMonstros.length; contMonstro++) {
+            while (! FaseAtual.isConcluida()) {
 
-                monstroAtual = FaseAtual.listaMonstros[contMonstro];
+                monstroAtual = FaseAtual.listaMonstros[FaseAtual.getContMonstro()];
 
                 // Introduz-se o combate entre personagem e monstro
-                System.out.println("|| Monstro: " + (contMonstro+1) + " ||\n");
-                ConstrutorDeCenario.Confronto(personagemAtual, monstroAtual);
+                System.out.println("|| Monstro: " + (FaseAtual.getContMonstro()+1) + " ||\n");
+                // ConstrutorDeCenario.Confronto(personagemAtual, monstroAtual);
+                geradorFases.Confronto(personagemAtual, monstroAtual);
                 Thread.sleep(1200);
 
                 contRound = 0;
@@ -80,6 +89,8 @@ public class Main {
                     Thread.sleep(1200);
                     
                 }
+
+                FaseAtual.avanca();
 
                 // Checagem se o herói continua vivo após o fim da batalha
                 if(! personagemAtual.estaVivo()){ ConstrutorDeCenario.Derrota(personagemAtual.getNome()); return; } 
