@@ -7,7 +7,7 @@ public class AtaqueHeroiSimples implements iacaoDeCombate {
         if (usuario instanceof HeroiAbstrato && alvo instanceof MonstroAbstrato) {
 
             HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
-            MonstroAbstrato usuarioAlvo = (MonstroAbstrato) alvo;
+            MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
             int dano;
             Random random = new Random();
             int numAleat = random.nextInt(0, 100);
@@ -21,25 +21,24 @@ public class AtaqueHeroiSimples implements iacaoDeCombate {
 
             if (numAleat + extra > 30) {
                 dano += usuarioHeroi.forca;
-                usuarioAlvo.receberDano(dano);
+                alvoMonstro.receberDano(dano);
 
                 System.out.println(usuarioHeroi.nome + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***");
                 System.out.println(usuarioHeroi.fraseDeEfeito);
 
-                if (usuarioAlvo.PontosDeVida <= 0) {
-                    usuarioHeroi.ganhaExperiencia(usuarioAlvo.xpConcedido);
-                    Arma armaLargada = usuarioAlvo.largaArma();
+                if (alvoMonstro.PontosDeVida <= 0) {
+                    usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
+                    // Arma armaLargada = alvoMonstro.largaArma();
+                    Arma armaLargada = (Arma) alvoMonstro.droparLoot();
                     if (armaLargada.minNivel <= usuarioHeroi.nivel) {
                         usuarioHeroi.equiparArma(armaLargada);
                     }
-                }
-                
-            } else {
-                    System.out.println("\r" + usuarioHeroi.nome + ": *** ERROU ATAQUE***");
-                }
-
+                }  
+            } 
+            else {
+                System.out.println("\r" + usuarioHeroi.nome + ": *** ERROU O ATAQUE ***");
+            }
         } 
-
     }
 
 }
