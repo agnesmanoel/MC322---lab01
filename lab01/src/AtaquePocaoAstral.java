@@ -8,7 +8,7 @@ public class AtaquePocaoAstral implements iacaoDeCombate{
 
         Random random = new Random();
             int numAleat = random.nextInt(0,100);
-            int dano = (heroi.nivel + 3) * 1 ; //tava assim antes personagemFeiticeira.PocaoAstral; pensar dps
+            int dano = (heroi.nivel + 3) * heroi.fatorEspecial ; 
     
             int acaso = 10*heroi.sorte/25;
             if (heroi.sorte <= 40) {acaso = - acaso;}
@@ -26,10 +26,11 @@ public class AtaquePocaoAstral implements iacaoDeCombate{
                     if(armaLargada.minNivel <= heroi.nivel){
                         heroi.equiparArma(armaLargada);
                     }
+                } else {
+                    System.out.println("\r" + heroi.nome + ": *** ERROU A HABILIDADE ESPECIAL ***");
                 }
             }
     }
     
 }
 
-//colocar frase errou habilidade especial

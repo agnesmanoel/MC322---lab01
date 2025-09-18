@@ -1,4 +1,3 @@
-import java.util.Random;
 
 public  class Esqueleto extends MonstroAbstrato  {
     
@@ -11,29 +10,12 @@ public  class Esqueleto extends MonstroAbstrato  {
         this.listaDeArmasParaLargar[0] = new Punhal();
         this.listaDeArmasParaLargar[1] = new Amuleto();
         this.listaDeArmasParaLargar[2] = new Pedra();
+        this.listaCombates.add(new AtaqueMonstroSimples());
     }
 
-    /* 
-     * Método concreto de ataque simples. A chance de acerto é 60%.
-     * Já o dano é dado pela força do objeto.
-     */
-    public void atacar(PersonagemAbstrato alvo){
+    public iacaoDeCombate escolherAcao(iCombatente alvo) {
+        return this.listaCombates.get(0);
         
-        int dano;
-        Random random = new Random();
-        int numAleat = random.nextInt(0,100);
-
-        if (numAleat<60) {
-            dano = this.forca+ this.arma.dano;
-            alvo.receberDano(dano);
-            
-            System.out.println(this.nome + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***");
-            if (alvo.estaVivo()) {System.out.println(this.fraseDeEfeito);}
-            else {System.out.println(this.fraseVitoria);}
-        }
-
-        else {System.out.println(this.nome + ": *** ERROU O ATAQUE ***"); }
-
     }
     
 }

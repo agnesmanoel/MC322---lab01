@@ -74,13 +74,16 @@ public class Main {
                     System.out.println("| Turno: " + contRound + " |\r\n");
                     Thread.sleep(800);
 
-                    // Seleciona-se aleatoriamente o tipo de ataque do herói
-                    flagAtac = random.nextInt(0, 100);
-                    if (flagAtac <= 65) { personagemAtual.atacar(monstroAtual); }
-                    else { personagemAtual.usarHabilidadeEspecial(monstroAtual); }
+                    // Ataque do herói
+                    iacaoDeCombate ataque = personagemAtual.escolherAcao(monstroAtual);
+                    ataque.executar(personagemAtual,monstroAtual);
+
                     
                     // Caso o monstro sobreviva ao ataque, tem a chance de contra-atacar
-                    if(monstroAtual.estaVivo()){ monstroAtual.atacar(personagemAtual); } 
+                    if(monstroAtual.estaVivo()){
+                        iacaoDeCombate ataqueMonstro = monstroAtual.escolherAcao(personagemAtual);
+                        ataqueMonstro.executar(monstroAtual, personagemAtual);
+                     } 
 
                     Thread.sleep(700);
 
