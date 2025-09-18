@@ -10,34 +10,21 @@ public class Feiticeira extends HeroiAbstrato {
     public Feiticeira () {
         super("Feiticeira", 16, 8, "- Feiticeira: Você erra ao me subestimar, aberração...", "- Feiticeira: A Natureza não terá piedade dos seus restos!","lab01/imagens-texto/feiticeira.txt");
         this.PocaoAstral = 1;
+        this.listaCombates.add(new AtaqueHeroiSimples());
+        this.listaCombates.add(new AtaquePocaoAstral());
     }
-
-    
-
 
     /**
      * Método aprimorado para incrementar habilidade especial a cada nível completado.
      */
-
-
     public iacaoDeCombate escolherAcao(iCombatente alvo) {
-        
+        Random random = new Random();
+        int flagAtac = random.nextInt(0, 100);
+        if (flagAtac <= 65) { return this.listaCombates.get(0); }
+        else { return this.listaCombates.get(1); }
     }
 
-
-
-
-    @Override
-    public void atacar(PersonagemAbstrato alvo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atacar'");
-    }
-}
-
-
-//------------------------------------------//
-
-/* public void atacar(PersonagemAbstrato alvo) {
+    /* public void atacar(PersonagemAbstrato alvo) {
         
         MonstroAbstrato monstro;
 
@@ -119,3 +106,6 @@ public class Feiticeira extends HeroiAbstrato {
         else { System.out.println("\r" + this.nome + ": *** ERROU A HABILIDADE ESPECIAL ***"); }
 
     } */
+
+}
+

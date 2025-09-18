@@ -31,19 +31,6 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         Random random = new Random();
         this.sorte = random.nextInt(0,100);
         List<iacaoDeCombate> listaCombates = new ArrayList<>();
-        popularLista();
-
-    }
-
-    private void popularLista(){
-        AtaqueHeroiSimples objetoAtaque = new AtaqueHeroiSimples();
-        AtaqueAuraDaJustiça objetoAtaqueAuraDaJustiça = new AtaqueAuraDaJustiça();
-        AtaquePocaoAstral objetoAtaquePocaoAstral = new AtaquePocaoAstral();
-
-
-        this.listaCombates.add(objetoAtaque);
-        this.listaCombates.add(objetoAtaqueAuraDaJustiça);
-        this.listaCombates.add(objetoAtaquePocaoAstral);
 
     }
 
