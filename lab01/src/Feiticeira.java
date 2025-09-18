@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Feiticeira extends HeroiAbstrato {
 
-    private int PocaoAstral;
+    protected int PocaoAstral;
 
     /** 
      * Método construtor de Feiticeira. O objeto é inicializado com 16 de vida e 8 de força.
@@ -12,11 +12,32 @@ public class Feiticeira extends HeroiAbstrato {
         this.PocaoAstral = 1;
     }
 
-    /* 
-     * Método concreto de ataque simples. A chance de acerto é 65% + (10 * nível atual)%
-     * Já o dano é dado pela força do objeto.
+    
+
+
+    /**
+     * Método aprimorado para incrementar habilidade especial a cada nível completado.
      */
+
+
+    public iacaoDeCombate escolherAcao(iCombatente alvo) {
+        
+    }
+
+
+
+
+    @Override
     public void atacar(PersonagemAbstrato alvo) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'atacar'");
+    }
+}
+
+
+//------------------------------------------//
+
+/* public void atacar(PersonagemAbstrato alvo) {
         
         MonstroAbstrato monstro;
 
@@ -60,7 +81,7 @@ public class Feiticeira extends HeroiAbstrato {
      * utilizada quando sua vida é menor ou igual a 4 * (nível + 2). Já o dano final 
      * é composto por PocaoDeVida * (nível + 3). A Feiticeira recupera de vida a mesma
      * magnitude de dano infligido.
-     */
+     *
     public void usarHabilidadeEspecial(PersonagemAbstrato alvo) {
 
         MonstroAbstrato monstro;
@@ -97,14 +118,4 @@ public class Feiticeira extends HeroiAbstrato {
 
         else { System.out.println("\r" + this.nome + ": *** ERROU A HABILIDADE ESPECIAL ***"); }
 
-    }
-
-    /**
-     * Método aprimorado para incrementar habilidade especial a cada nível completado.
-     */
-    @Override
-    protected void ganhaNivel() {
-        super.ganhaNivel();
-        this.PocaoAstral ++;
-    }
-}
+    } */
