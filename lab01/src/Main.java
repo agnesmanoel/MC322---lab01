@@ -7,6 +7,9 @@ public class Main {
         Paladino personagemPaladino = new Paladino();
         Feiticeira personagemFeiticeira = new Feiticeira();
 
+        // Instanciar emboscada
+        iEvento emboscada = new Emboscada();
+
         // Gerador de números aleatórios
         Random random = new Random();
 
@@ -90,7 +93,12 @@ public class Main {
                     ConstrutorDeCenario.Status(personagemAtual, monstroAtual);
                     Thread.sleep(1200);
                     
-                }
+                } 
+                emboscada.executar(personagemAtual);
+                Thread.sleep(1200);
+
+
+
 
                 FaseAtual.avanca();
 

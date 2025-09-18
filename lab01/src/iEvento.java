@@ -1,4 +1,4 @@
 public interface iEvento {
-    boolean verificarGatilho();
-    void executar();
+    boolean verificarGatilho(HeroiAbstrato usuario);
+    void executar(HeroiAbstrato usuario);
 }
