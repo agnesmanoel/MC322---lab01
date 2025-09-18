@@ -1,6 +1,6 @@
 import java.util.Random;
 
-abstract class MonstroAbstrato extends PersonagemAbstrato{
+abstract class MonstroAbstrato extends PersonagemAbstrato implements iLootavel{
     
     protected int xpConcedido;
     protected String fraseDeEfeito;
@@ -60,6 +60,14 @@ abstract class MonstroAbstrato extends PersonagemAbstrato{
     }
 
     protected Arma largaArma() {
+        Random random = new Random();
+        int numAleat = random.nextInt(0,3);
+
+        return this.listaDeArmasParaLargar[numAleat];
+    }
+
+    @Override
+    public iItem droparLoot() {
         Random random = new Random();
         int numAleat = random.nextInt(0,3);
 
