@@ -2,6 +2,11 @@ import java.util.Random;
 
 public class AtaquePocaoAstral implements iacaoDeCombate{
 
+    /**
+     * Método que implementa a habilidade especial da Feiticeira. Em sua ação,
+     * quando o número sorteado + o acaso >= 50, ela é capaz de roubar vida do inimigo,
+     * infligindo dano ao mesmo tempo em que recupera sua prória vida.
+     */
     public void executar(iCombatente usuario, iCombatente alvo) {
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
@@ -10,7 +15,7 @@ public class AtaquePocaoAstral implements iacaoDeCombate{
         int numAleat = random.nextInt(0,100);
         int dano = (usuarioHeroi.nivel + 3) * usuarioHeroi.fatorEspecial ; 
 
-        int acaso = 10*usuarioHeroi.sorte/25;
+        int acaso = 10*usuarioHeroi.sorte/25; // Influência da sorte do personagem
         if (usuarioHeroi.sorte <= 40) {acaso = - acaso;}
 
         if (numAleat + acaso > 50 && usuarioHeroi.PontosDeVida <= 4 * (usuarioHeroi.nivel + 2)) {

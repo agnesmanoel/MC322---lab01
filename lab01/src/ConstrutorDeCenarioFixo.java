@@ -7,10 +7,12 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
     
     static  String nomePersonagem;
 
+    // Método construtor
     public ConstrutorDeCenarioFixo(HeroiAbstrato heroi) {
         nomePersonagem = heroi.getNome();
     }
 
+    // Método para exibir introdução da campanha.
     public static void Intro() {
 
         printaCastelo();
@@ -40,6 +42,7 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         System.out.println(image);
     }
     
+    // Método para exibição de um confronto
     public static void Confronto(HeroiAbstrato heroi, MonstroAbstrato monstro) {
         
         Random random = new Random();
@@ -117,6 +120,7 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         }
     }
 
+    // Método para exibição do status de um herói.
     public static void Status(HeroiAbstrato heroi) {
         System.out.println("\r\n------");
         System.out.println("Status");
@@ -124,6 +128,7 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         System.out.println(heroi);
     }
 
+    // Método para exibição do status de um herói e um monstro.
     public static void Status(HeroiAbstrato heroi, MonstroAbstrato monstro) {
         System.out.println("\r\n------");
         System.out.println("Status");
@@ -161,7 +166,8 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
             }
         }
     }
-                    
+    
+    // Método para exibir mensagem de vitória.
     public static void Vitoria() {
         System.out.println("Ao menos por ora, " + nomePersonagem + " mostrou-se capaz de livrar o reino Tchutchuwamako das legiões infernais.");
         System.out.println("Os assustados moradores agora podem voltar a dormir em paz...");
@@ -171,7 +177,8 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         System.out.println("            ***************");
         System.out.println("\n\n");
     }
-
+    
+    // Método para exibir mensagem de vitória.
     public static void Derrota() {
         System.out.println("As legiões infernais se apoderam do reino de Tchutchuwamako, dando início a um reinado de terror e trevas...");
         System.out.println(nomePersonagem+" fracassou em seu juramento de proteção...");
@@ -182,6 +189,7 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         System.out.println("\n\n");
     }
 
+    // Método gerador de fases.
     @Override
     public iFase[] gerar(int quantidadeDeFases) {
 

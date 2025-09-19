@@ -2,6 +2,10 @@ import java.util.Random;
 
 public class AtaqueAuraDaJustiça implements iacaoDeCombate {
 
+    /**
+     * Método da habilidade especial do Paladino. Quando o número sorteado + 5*(nível+1) + acaso 
+     * >= 70%, ele é capaz de infligir quantidades massivas de dano.
+     */
     public void executar(iCombatente usuario, iCombatente alvo) {
 
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
@@ -31,7 +35,6 @@ public class AtaqueAuraDaJustiça implements iacaoDeCombate {
 
             if (alvoMonstro.PontosDeVida <= 0) {
                 usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
-                // Arma armaLargada = alvoMonstro.largaArma();
                 Arma armaLargada = (Arma) alvoMonstro.droparLoot();
                 if (armaLargada.minNivel <= usuarioHeroi.nivel) {
                     usuarioHeroi.equiparArma(armaLargada);

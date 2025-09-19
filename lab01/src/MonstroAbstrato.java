@@ -59,13 +59,11 @@ abstract class MonstroAbstrato extends PersonagemAbstrato implements iLootavel{
         System.out.println(this.fraseApresentacao);
     }
 
-    protected Arma largaArma() {
-        Random random = new Random();
-        int numAleat = random.nextInt(0,3);
-
-        return this.listaDeArmasParaLargar[numAleat];
-    }
-
+    /**
+     * Método responsável por dropar loot do monstro, quando este morre.
+     * Seleciona-se, aleatoriamente, um dos três itens que podem ser largados
+     * da lista de Armas.
+     */
     @Override
     public iItem droparLoot() {
         Random random = new Random();

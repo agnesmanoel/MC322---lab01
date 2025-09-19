@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class AtaqueHeroiSimples implements iacaoDeCombate {
 
+    // Método de ataque simples dos heróis.
     public void executar(iCombatente usuario, iCombatente alvo) {
 
         if (usuario instanceof HeroiAbstrato && alvo instanceof MonstroAbstrato) {
@@ -28,7 +29,6 @@ public class AtaqueHeroiSimples implements iacaoDeCombate {
 
                 if (alvoMonstro.PontosDeVida <= 0) {
                     usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
-                    // Arma armaLargada = alvoMonstro.largaArma();
                     Arma armaLargada = (Arma) alvoMonstro.droparLoot();
                     if (armaLargada.minNivel <= usuarioHeroi.nivel) {
                         usuarioHeroi.equiparArma(armaLargada);

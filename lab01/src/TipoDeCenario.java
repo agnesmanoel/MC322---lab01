@@ -10,6 +10,9 @@ public enum TipoDeCenario {
         this.descricao = descricao;
     }
 
+    /*
+     * Pequena introdução, e ambientação dos cenários.
+     */
     void aplicarEfeitos(HeroiAbstrato heroi) {
         System.out.println(descricao + "\n" + heroi.getNome() + " avança, inquebrantável, sem medo.");
     }

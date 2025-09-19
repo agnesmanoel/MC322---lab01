@@ -7,7 +7,7 @@ public class Main {
         Paladino personagemPaladino = new Paladino();
         Feiticeira personagemFeiticeira = new Feiticeira();
 
-        // Instanciar emboscada
+        // Instancindo emboscada
         iEvento emboscada = new Emboscada();
 
         // Gerador de números aleatórios
@@ -20,38 +20,32 @@ public class Main {
             personagemAtual = personagemFeiticeira;
         }
 
-        //Instanciando ConstrutorDeCenarioFixo
+        //Instanciando ConstrutorDeCenarioFixo (isto é, o gerador de fases)
         ConstrutorDeCenarioFixo geradorFases = new ConstrutorDeCenarioFixo(personagemAtual);
         
-        // Variável aleatória responsável por definir o tipo de ataque (normal ou habilidade especial) 
-        // utilizado pelo personagem.
-        int flagAtac;
-
         // Variáveis de contagem
         int contRound;
 
         // Lista de fases
         int nFases = 2; // Número de fases
-        // Fase FaseAtual;
-        // Fase[] listaFases = ConstrutorDeCenario.gerarFases(nFases, personagemAtual.getNome());  
         FaseCombate FaseAtual;
         iFase[] listaFases = geradorFases.gerar(nFases);
      
         // Exibe a introdução da campanha
-        // ConstrutorDeCenario.Intro(personagemAtual.getNome());
         geradorFases.Intro();
         Thread.sleep(1800);
 
         // Loop principal percorrendo a lista de fases
         for (int contFase = 0; contFase < nFases; contFase++) {
 
+            System.out.println("||| Fase: " + (contFase+1) + " / " + nFases + " |||\n\n");
+
             FaseAtual = (FaseCombate) listaFases[contFase];
             MonstroAbstrato monstroAtual;
 
-            // System.out.println(FaseAtual);
+            // Início da fase e exibição dos status do personagem
             FaseAtual.iniciar(personagemAtual);
             Thread.sleep(1500);
-            // ConstrutorDeCenario.Status(personagemAtual);
             geradorFases.Status(personagemAtual);
             Thread.sleep(900);
             
@@ -62,7 +56,6 @@ public class Main {
 
                 // Introduz-se o combate entre personagem e monstro
                 System.out.println("|| Monstro: " + (FaseAtual.getContMonstro()+1) + " ||\n");
-                // ConstrutorDeCenario.Confronto(personagemAtual, monstroAtual);
                 geradorFases.Confronto(personagemAtual, monstroAtual);
                 Thread.sleep(1200);
 
@@ -90,27 +83,27 @@ public class Main {
                     Thread.sleep(700);
 
                     // Exibem-se os status de cada combatente
-                    ConstrutorDeCenario.Status(personagemAtual, monstroAtual);
+                    geradorFases.Status(personagemAtual, monstroAtual);
                     Thread.sleep(1200);
                     
                 } 
+
+                // Checagem se a emboscada é ativada
                 emboscada.executar(personagemAtual);
                 Thread.sleep(1200);
 
-
-
-
+                // Avança-se para o próximo monstro da fase, caso o haja
                 FaseAtual.avanca();
 
                 // Checagem se o herói continua vivo após o fim da batalha
-                if(! personagemAtual.estaVivo()){ ConstrutorDeCenario.Derrota(personagemAtual.getNome()); return; } 
+                if(! personagemAtual.estaVivo()){ geradorFases.Derrota(); return; } 
                 
             }
 
         }
 
         // Checagem se o herói continua vivo após as três fases da campanha
-        if(personagemAtual.estaVivo()){ ConstrutorDeCenario.Vitoria(personagemAtual.getNome()); }
+        if(personagemAtual.estaVivo()){ geradorFases.Vitoria(); }
     }
 
 }

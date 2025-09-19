@@ -122,14 +122,15 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
         System.out.println(this);
     }
 
-    /**
-     * Método abstrato de habilidade especial.
-     * @param alvo : oponente em combate;
-     
-    //public abstract void usarHabilidadeEspecial(iCombatente alvo);*/
-
+    /** 
+     * Método abstrato de escolha da ação de combate.
+     */
     public abstract iacaoDeCombate escolherAcao(iCombatente alvo);
 
+    /**
+     * Método para equipar arma encontrada após vitória em combate.
+     * @param novaArma : arma largada pelo monstro derrotado.
+     */
     protected void equiparArma(Arma novaArma) {
         if (this.arma == null || this.arma.dano <= novaArma.dano) {
             this.arma = novaArma;

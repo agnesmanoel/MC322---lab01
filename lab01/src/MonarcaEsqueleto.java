@@ -13,9 +13,11 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
         this.listaCombates.add(new AtaqueMonstroSimples());
     }
 
-    public iacaoDeCombate escolherAcao(iCombatente alvo) {
-        return this.listaCombates.get(0);
-        
-    }
-    
+    /**
+     * Método responsável por escolher ação de combate do Monarca.
+     * Por enquanto, ele, tal como todos os demais monstros, possuem apenas
+     * um ataque disponível.
+     */
+    public iacaoDeCombate escolherAcao(iCombatente alvo) { return this.listaCombates.get(0); } 
+
 }

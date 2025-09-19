@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class AtaqueMonstroSimples implements iacaoDeCombate {
 
+    // Método de ataque simples dos monstros.
     public void executar(iCombatente usuario, iCombatente alvo) {
         MonstroAbstrato monstro = (MonstroAbstrato) usuario;
 

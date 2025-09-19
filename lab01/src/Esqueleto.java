@@ -13,6 +13,11 @@ public  class Esqueleto extends MonstroAbstrato  {
         this.listaCombates.add(new AtaqueMonstroSimples());
     }
 
+    /**
+     * Método responsável por escolher ação de combate do Esqueleto.
+     * Por enquanto, ele, tal como todos os demais monstros, possuem apenas
+     * um ataque disponível.
+     */
     public iacaoDeCombate escolherAcao(iCombatente alvo) {
         return this.listaCombates.get(0);
         

@@ -14,6 +14,11 @@ public  class Fantasma extends MonstroAbstrato  {
 
     }
 
+    /**
+     * Método responsável por escolher ação de combate do Fantasma.
+     * Por enquanto, ele, tal como todos os demais monstros, possuem apenas
+     * um ataque disponível.
+     */
     public iacaoDeCombate escolherAcao(iCombatente alvo) {
         return this.listaCombates.get(0);
         
