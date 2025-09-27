@@ -29,7 +29,7 @@ public class Main {
         // Lista de fases
         int nFases = 2; // Número de fases
         FaseCombate FaseAtual;
-        iFase[] listaFases = geradorFases.gerar(nFases);
+        iFase[] listaFases = geradorFases.gerar(nFases, Dificuldade.FACIL);
      
         // Exibe a introdução da campanha
         geradorFases.Intro();

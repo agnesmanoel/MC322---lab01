@@ -6,13 +6,23 @@ public  class Fantasma extends MonstroAbstrato  {
      * 2 xp concedidos.
      */
     public Fantasma(){
-        super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt", new Punhal());
+        super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt", new Punhal(), 0, 0);
         this.listaDeArmasParaLargar[0] = new Punhal();
         this.listaDeArmasParaLargar[1] = new Pedra();
         this.listaDeArmasParaLargar[2] = new Pedra();
         this.listaCombates.add(new AtaqueMonstroSimples());
 
     }
+    public Fantasma(int adVida, int adForca, Arma[] armasParaLargar){
+        super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt", new Punhal(), adVida, adForca);
+        this.listaDeArmasParaLargar = armasParaLargar.clone();
+        // this.listaDeArmasParaLargar[0] = new Punhal();
+        // this.listaDeArmasParaLargar[1] = new Pedra();
+        // this.listaDeArmasParaLargar[2] = new Pedra();
+        this.listaCombates.add(new AtaqueMonstroSimples());
+
+    }
+
 
     /**
      * Método responsável por escolher ação de combate do Fantasma.

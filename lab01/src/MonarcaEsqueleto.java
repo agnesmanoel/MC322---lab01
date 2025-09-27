@@ -6,10 +6,18 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
      * 20 xp concedidos.
      */
     public MonarcaEsqueleto() {
-        super("Monarca Esqueleto", 10, 15, 20, "- Monarca Esqueleto: Sucumba ao meu inferno, criatura infeliz...", "- Monarca Esqueleto: Seus deuses te ESQUECERAM!","- Monarca Esqueleto: Curve-se ao meu império do mal ou morra desejando piedade de sua alma.", "lab01/imagens-texto/monarca-esqueleto.txt", new Coroa());
+        super("Monarca Esqueleto", 10, 15, 20, "- Monarca Esqueleto: Sucumba ao meu inferno, criatura infeliz...", "- Monarca Esqueleto: Seus deuses te ESQUECERAM!","- Monarca Esqueleto: Curve-se ao meu império do mal ou morra desejando piedade de sua alma.", "lab01/imagens-texto/monarca-esqueleto.txt", new Coroa(), 0, 0);
         this.listaDeArmasParaLargar[0] = new Coroa();
         this.listaDeArmasParaLargar[1] = new Amuleto();
         this.listaDeArmasParaLargar[2] = new Amuleto();
+        this.listaCombates.add(new AtaqueMonstroSimples());
+    }
+    public MonarcaEsqueleto(int adVida, int adForca, Arma[] armasParaLargar) {
+        super("Monarca Esqueleto", 10, 15, 20, "- Monarca Esqueleto: Sucumba ao meu inferno, criatura infeliz...", "- Monarca Esqueleto: Seus deuses te ESQUECERAM!","- Monarca Esqueleto: Curve-se ao meu império do mal ou morra desejando piedade de sua alma.", "lab01/imagens-texto/monarca-esqueleto.txt", new Coroa(), adVida, adForca);
+        this.listaDeArmasParaLargar = armasParaLargar.clone();
+        // this.listaDeArmasParaLargar[0] = new Coroa();
+        // this.listaDeArmasParaLargar[1] = new Amuleto();
+        // this.listaDeArmasParaLargar[2] = new Amuleto();
         this.listaCombates.add(new AtaqueMonstroSimples());
     }
 

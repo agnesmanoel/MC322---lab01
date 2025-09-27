@@ -21,8 +21,8 @@ abstract class MonstroAbstrato extends PersonagemAbstrato implements iLootavel{
      * @param imageURL : imagem ASCII do personagem.
      * @param arma : arma do personagem.
      */
-    public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria, String fraseApresentacao, String URL, Arma arma) {
-        super(n, pv, f, URL, arma);
+    public MonstroAbstrato(String n, int pv, int f, int xp, String fraseEfeito, String fraseVitoria, String fraseApresentacao, String URL, Arma arma, int adVida, int adForca) {
+        super(n, pv+adVida, f+adForca, URL, arma);
         this.xpConcedido = xp;
         this.fraseDeEfeito = fraseEfeito;
         this.fraseVitoria = fraseVitoria;

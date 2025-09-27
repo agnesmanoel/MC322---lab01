@@ -1,3 +1,3 @@
 public interface iGeradorDeFases {
-    iFase[] gerar(int quantidadeDeFases);
+    iFase[] gerar(int quantidadeDeFases, Dificuldade dificuldade);
 }

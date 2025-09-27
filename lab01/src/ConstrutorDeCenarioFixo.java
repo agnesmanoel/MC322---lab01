@@ -191,13 +191,15 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
 
     // Método gerador de fases.
     @Override
-    public iFase[] gerar(int quantidadeDeFases) {
+    public iFase[] gerar(int quantidadeDeFases, Dificuldade dificuldade) {
 
         iFase[] result = new iFase[quantidadeDeFases];
         int nivel = 0;
         TipoDeCenario cenario;
         MonstroAbstrato[] listaMonstro;
         int nMonstro;
+        int adVida = dificuldade.AdicionalVida();
+        int adForca = dificuldade.AdicionalForca();
         Random random = new Random();
         int numAleat;
 
@@ -212,43 +214,43 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
 
             if (nivel == 1) {
                 cenario = TipoDeCenario.PORTÃO;
-                listaMonstro[0] = new Fantasma();
-                listaMonstro[1] = new Fantasma();
+                listaMonstro[0] = new Fantasma(adVida, adForca, dificuldade.ArmasParaLargar());
+                listaMonstro[1] = new Fantasma(adVida, adForca, dificuldade.ArmasParaLargar());
             }
             else if (nivel == quantidadeDeFases) {
                 cenario = TipoDeCenario.MASMORRA;
                 for (int i = 0; i < nMonstro; i++) {
                     numAleat = random.nextInt(0, 100);
                     if (numAleat < 30) {
-                        listaMonstro[i] = new Fantasma();
+                        listaMonstro[i] = new Fantasma(adVida, adForca, dificuldade.ArmasParaLargar());
                     }
                     else if (30 <= numAleat && numAleat < 60) {
-                        listaMonstro[i] = new Esqueleto();
+                        listaMonstro[i] = new Esqueleto(adVida, adForca, dificuldade.ArmasParaLargar());
                     }
                     else {
-                        listaMonstro[i] = new MonarcaEsqueleto();
+                        listaMonstro[i] = new MonarcaEsqueleto(adVida, adForca, dificuldade.ArmasParaLargar());
                     }
                 }
             }
             else if (nivel == 2) {
                 cenario = TipoDeCenario.MASMORRA;
-                listaMonstro[0] = new Fantasma();
-                listaMonstro[1] = new Fantasma();
-                listaMonstro[2] = new Esqueleto();
-                listaMonstro[3] = new Esqueleto();
+                listaMonstro[0] = new Fantasma(adVida, adForca, dificuldade.ArmasParaLargar());
+                listaMonstro[1] = new Fantasma(adVida, adForca, dificuldade.ArmasParaLargar());
+                listaMonstro[2] = new Esqueleto(adVida, adForca, dificuldade.ArmasParaLargar());
+                listaMonstro[3] = new Esqueleto(adVida, adForca, dificuldade.ArmasParaLargar());
             }
             else {
                 cenario = TipoDeCenario.MASMORRA;
                 for (int i = 0; i < nMonstro; i++) {
                     numAleat = random.nextInt(0, 100);
                     if (numAleat < 30) {
-                        listaMonstro[i] = new Fantasma();
+                        listaMonstro[i] = new Fantasma(adVida, adForca, dificuldade.ArmasParaLargar());
                     }
                     else if (30 <= numAleat && numAleat < 85) {
-                        listaMonstro[i] = new Esqueleto();
+                        listaMonstro[i] = new Esqueleto(adVida, adForca, dificuldade.ArmasParaLargar());
                     }
                     else {
-                        listaMonstro[i] = new MonarcaEsqueleto();
+                        listaMonstro[i] = new MonarcaEsqueleto(adVida, adForca, dificuldade.ArmasParaLargar());
                     }
                 }
             }

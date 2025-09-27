@@ -6,10 +6,18 @@ public  class Esqueleto extends MonstroAbstrato  {
      * 7 xp concedidos.
      */
     public Esqueleto(){
-        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!", "lab01/imagens-texto/esqueleto.txt", new Amuleto());
+        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!", "lab01/imagens-texto/esqueleto.txt", new Amuleto(), 0, 0);
         this.listaDeArmasParaLargar[0] = new Punhal();
         this.listaDeArmasParaLargar[1] = new Amuleto();
         this.listaDeArmasParaLargar[2] = new Pedra();
+        this.listaCombates.add(new AtaqueMonstroSimples());
+    }
+    public Esqueleto(int adVida, int adForca, Arma[] armasParaLargar){
+        super("Esqueleto", 10, 5, 7, "- Esqueleto: HA! HA! HA! Ossada sinistra!", "- Esqueleto: Torne-se um de NÓS!","- Esqueleto: Eu  não terei pena de torná-lo um dos nossos!", "lab01/imagens-texto/esqueleto.txt", new Amuleto(), adVida, adForca);
+        this.listaDeArmasParaLargar = armasParaLargar.clone();
+        // this.listaDeArmasParaLargar[0] = new Punhal();
+        // this.listaDeArmasParaLargar[1] = new Amuleto();
+        // this.listaDeArmasParaLargar[2] = new Pedra();
         this.listaCombates.add(new AtaqueMonstroSimples());
     }
 
