@@ -30,9 +30,13 @@ public class AtaqueHeroiSimples implements iacaoDeCombate {
                 if (alvoMonstro.PontosDeVida <= 0) {
                     usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
                     Arma armaLargada = (Arma) alvoMonstro.droparLoot();
-                    if (armaLargada.minNivel <= usuarioHeroi.nivel) {
-                        usuarioHeroi.equiparArma(armaLargada);
-                    }
+                        try{
+                            usuarioHeroi.equiparArma(armaLargada);
+                        } 
+                        catch(mininsuficienteArma e){
+                            System.out.println("*VOCÊ NÃO TEM NÍVEL SUFICIENTE PARA EQUIPAR ESSA ARMA");
+                        }
+                    
                 }  
             } 
             else {

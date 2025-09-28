@@ -6,7 +6,7 @@ public class AtaqueAuraDaJustiça implements iacaoDeCombate {
      * Método da habilidade especial do Paladino. Quando o número sorteado + 5*(nível+1) + acaso 
      * >= 70%, ele é capaz de infligir quantidades massivas de dano.
      */
-    public void executar(iCombatente usuario, iCombatente alvo) {
+    public void executar (iCombatente usuario, iCombatente alvo) throws HabilidadeAntesdeVidaSuficiente{
 
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
@@ -20,6 +20,12 @@ public class AtaqueAuraDaJustiça implements iacaoDeCombate {
         } else {
             dano = usuarioHeroi.arma.dano;
         }
+
+        if(usuarioHeroi.PontosDeVida > 4 * (usuarioHeroi.nivel + 2)){
+            System.out.println("cheguei aki");
+            throw new HabilidadeAntesdeVidaSuficiente();
+        }
+
 
         int acaso = 10 * usuarioHeroi.sorte / 25;
         if (usuarioHeroi.sorte <= 40) {
@@ -36,8 +42,11 @@ public class AtaqueAuraDaJustiça implements iacaoDeCombate {
             if (alvoMonstro.PontosDeVida <= 0) {
                 usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
                 Arma armaLargada = (Arma) alvoMonstro.droparLoot();
-                if (armaLargada.minNivel <= usuarioHeroi.nivel) {
+                try{
                     usuarioHeroi.equiparArma(armaLargada);
+                } 
+                catch(mininsuficienteArma e){
+                    System.out.println("*VOCÊ NÃO TEM NÍVEL SUFICIENTE PARA EQUIPAR ESSA ARMA");
                 }
             }
 

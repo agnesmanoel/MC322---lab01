@@ -131,10 +131,13 @@ abstract class HeroiAbstrato extends PersonagemAbstrato {
      * Método para equipar arma encontrada após vitória em combate.
      * @param novaArma : arma largada pelo monstro derrotado.
      */
-    protected void equiparArma(Arma novaArma) {
-        if (this.arma == null || this.arma.dano <= novaArma.dano) {
-            this.arma = novaArma;
-            System.out.println("*** ENCONTROU " + novaArma.intro + " ***");
-        }
+    protected void equiparArma(Arma novaArma) throws mininsuficienteArma {
+        if (novaArma.minNivel <= this.nivel) {
+            if (this.arma == null) {
+                this.arma = novaArma;
+                System.out.println("*** ENCONTROU " + novaArma.intro + " ***");
+            }
+     } else { throw new mininsuficienteArma();}
+
     }
 }
