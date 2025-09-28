@@ -83,7 +83,7 @@ public class Main {
                     if(monstroAtual.estaVivo()){
                         iacaoDeCombate ataqueMonstro = monstroAtual.escolherAcao(personagemAtual);
                         ataqueMonstro.executar(monstroAtual, personagemAtual);
-                     } 
+                    }
 
                     Thread.sleep(700);
 

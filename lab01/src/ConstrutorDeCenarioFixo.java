@@ -189,6 +189,56 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         System.out.println("\n\n");
     }
 
+    public static int Menu() {
+
+        String texto =  "___________________________________\n";
+        texto = texto + ".. A batalha por Tchutchuwamako  ..\n";
+        texto = texto + "___________________________________\n";
+        texto = texto + "[1] Iniciar Novo Jogo\n";
+        texto = texto + "[2] Classes de Heróis\n";
+        texto = texto + "[3] Classes de Monstros\n";
+        texto = texto + "[4] Sair do jogo\n";
+        texto = texto + "___________________________________\n";
+        System.out.println(texto);
+        
+        String msg = "Escolha uma ação -->";
+        int input = InputManager.lerInteiro(msg, 1, 4);
+
+        return input;
+
+    }
+
+    public static boolean posTurno(HeroiAbstrato heroi) {
+
+        String texto =  "________________________\n";
+        texto = texto + ".. Resumo da batalha  ..\n";
+        texto = texto + "________________________\n";
+
+        texto = texto + "[1] Continuar campanha\n";
+        texto = texto + "[2] Examinar loot\n";
+        texto = texto + "[3] Status do herói\n";
+        texto = texto + "[4] Desistir do jogo\n";
+
+        String msg = "Escolha uma ação -->";
+        int input = InputManager.lerInteiro(msg, 1, 4);
+
+        while (input != 1 || input != 4) {
+            switch (input) {
+                case 2:
+                    
+                    break;
+                case 3:
+                    Status(heroi);
+                    break;
+            }
+            input = InputManager.lerInteiro(msg, 1, 4);
+        }
+
+        if (input == 1) { return true; }
+        else { return false; }
+        
+    }
+
     // Método gerador de fases.
     @Override
     public iFase[] gerar(int quantidadeDeFases, Dificuldade dificuldade) {
