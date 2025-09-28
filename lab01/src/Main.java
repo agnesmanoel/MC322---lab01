@@ -71,7 +71,12 @@ public class Main {
                     Thread.sleep(800);
                     // Ataque do herói
                     iacaoDeCombate ataque = personagemAtual.escolherAcao(monstroAtual);
-                    ataque.executar(personagemAtual,monstroAtual);
+                    
+                    try {
+                        ataque.executar(personagemAtual,monstroAtual);
+                    } catch (HabilidadeAntesdeVidaSuficiente e) {
+                        System.out.println("Mais vida do que o necessário");
+                    }
 
                     
                     // Caso o monstro sobreviva ao ataque, tem a chance de contra-atacar

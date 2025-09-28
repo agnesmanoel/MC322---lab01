@@ -7,9 +7,14 @@ public class AtaquePocaoAstral implements iacaoDeCombate{
      * quando o número sorteado + o acaso >= 50, ela é capaz de roubar vida do inimigo,
      * infligindo dano ao mesmo tempo em que recupera sua prória vida.
      */
-    public void executar(iCombatente usuario, iCombatente alvo) {
+    public void executar(iCombatente usuario, iCombatente alvo) throws HabilidadeAntesdeVidaSuficiente{
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
+
+        if(usuarioHeroi.PontosDeVida > 4 * (usuarioHeroi.nivel + 2)){
+            System.out.println("cheguei aki");
+            throw new HabilidadeAntesdeVidaSuficiente();
+        }
 
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
@@ -29,9 +34,10 @@ public class AtaquePocaoAstral implements iacaoDeCombate{
                 usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
                 // Arma armaLargada = alvoMonstro.largaArma();
                 Arma armaLargada = (Arma) alvoMonstro.droparLoot();
-                if(armaLargada.minNivel <= usuarioHeroi.nivel){
-                    usuarioHeroi.equiparArma(armaLargada);
-                }
+                    try {usuarioHeroi.equiparArma(armaLargada);} catch(mininsuficienteArma e) {
+                        System.out.println("++VOCÊ NÃO TEM NÍVEL SUFICIENTE PARA EQUIPAR ESSA ARMA**");
+                    }
+
             } 
         }
         else {

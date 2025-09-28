@@ -19,7 +19,7 @@ public class Feiticeira extends HeroiAbstrato {
         Random random = new Random();
         int flagAtac = random.nextInt(0, 100);
         if (flagAtac <= 65) { return this.listaCombates.get(0); }
-        else { return this.listaCombates.get(1); }
+        else {return this.listaCombates.get(1); }
     }
 
 }
