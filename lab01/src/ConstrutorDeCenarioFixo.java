@@ -128,6 +128,14 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         System.out.println(heroi);
     }
 
+    // Método para exibição do status de um herói.
+    public static void Status(MonstroAbstrato monstro) {
+        System.out.println("\r\n------");
+        System.out.println("Status");
+        System.out.println("\r------");
+        System.out.println(monstro);
+    }
+
     // Método para exibição do status de um herói e um monstro.
     public static void Status(HeroiAbstrato heroi, MonstroAbstrato monstro) {
         System.out.println("\r\n------");
@@ -189,7 +197,7 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         System.out.println("\n\n");
     }
 
-    public static int Menu() {
+    public static boolean Menu() {
 
         String texto =  "___________________________________\n";
         texto = texto + ".. A batalha por Tchutchuwamako  ..\n";
@@ -201,14 +209,73 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         texto = texto + "___________________________________\n";
         System.out.println(texto);
         
-        String msg = "Escolha uma ação -->";
+        String msg = "Escolha uma ação >";
         int input = InputManager.lerInteiro(msg, 1, 4);
 
-        return input;
+        while (input != 1 && input != 4) {
+            switch (input) {
+                
+                case 2: 
+                    Status(new Paladino());
+                    System.out.println("\n");
+                    Status(new Feiticeira());
+                    System.out.println("\n");
+                    
+                    break;
+                case 3:
+                    Status(new Fantasma());
+                    System.out.println("\n");
+                    Status(new Esqueleto());
+                    System.out.println("\n");
+                    Status(new MonarcaEsqueleto());
+                    System.out.println("\n");
+                    break;
+                    
+            }
+            input = InputManager.lerInteiro(msg, 1, 4);
+            System.out.println("\n");
+        }
+
+        if (input == 1) { return true; }
+        else { return false; }
 
     }
 
-    public static boolean posTurno(HeroiAbstrato heroi) {
+    public static Dificuldade EscolherDificuldade() {
+        String texto =  "____________________________\n";
+        texto = texto + ".. Escolha a dificuldade  ..\n";
+        texto = texto + "____________________________\n";
+
+        texto = texto + "[1] Fácil\n";
+        texto = texto + "[2] Normal\n";
+        texto = texto + "[3] Difícil\n";
+        System.out.println(texto);
+
+        String msg = "Escolha uma ação >";
+        int input = InputManager.lerInteiro(msg, 1, 3);
+
+        if (input == 1)
+           return Dificuldade.FACIL;
+        else if (input == 2)
+                return Dificuldade.NORMAL;
+        else
+            return Dificuldade.DIFICIL;
+    }
+
+    public static int EscolherNumeroDeFases() {
+        String texto =  "________________________________\n";
+        texto = texto + ".. Escolha o número de fases  ..\n";
+        texto = texto + "________________________________\n";
+        System.out.println(texto);
+
+        String msg = "Escolha uma número >";
+        int input = InputManager.lerInteiro(msg, 1, 5);
+
+        return input;
+    }
+    
+
+    public static boolean posTurno(HeroiAbstrato heroi, MonstroAbstrato monstro) {
 
         String texto =  "________________________\n";
         texto = texto + ".. Resumo da batalha  ..\n";
@@ -218,20 +285,31 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
         texto = texto + "[2] Examinar loot\n";
         texto = texto + "[3] Status do herói\n";
         texto = texto + "[4] Desistir do jogo\n";
+        System.out.println(texto);
 
-        String msg = "Escolha uma ação -->";
+        String msg = "Escolha uma ação >";
         int input = InputManager.lerInteiro(msg, 1, 4);
 
-        while (input != 1 || input != 4) {
+        while (input != 1 && input != 4) {
             switch (input) {
-                case 2:
+                
+                case 2: // examinar loot
+                    try{
+                        Arma armaDropada = (Arma) monstro.droparLoot();
+                        heroi.equiparArma(armaDropada);
+                    } catch(mininsuficienteArma e ){
+                        System.out.println("Nível insuficiente para a arma.");
+                    }
+                    // chama o metodo equipar arma
                     
                     break;
                 case 3:
                     Status(heroi);
                     break;
+                    
             }
             input = InputManager.lerInteiro(msg, 1, 4);
+            System.out.println("\n");
         }
 
         if (input == 1) { return true; }

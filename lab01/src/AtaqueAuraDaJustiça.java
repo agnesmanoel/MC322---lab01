@@ -41,13 +41,13 @@ public class AtaqueAuraDaJustiça implements iacaoDeCombate {
 
             if (alvoMonstro.PontosDeVida <= 0) {
                 usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
-                Arma armaLargada = (Arma) alvoMonstro.droparLoot();
-                try{
-                    usuarioHeroi.equiparArma(armaLargada);
-                } 
-                catch(mininsuficienteArma e){
-                    System.out.println("*VOCÊ NÃO TEM NÍVEL SUFICIENTE PARA EQUIPAR ESSA ARMA");
-                }
+               // Arma armaLargada = (Arma) alvoMonstro.droparLoot();
+                //try{
+                  //  usuarioHeroi.equiparArma(armaLargada);
+                //} 
+                //catch(mininsuficienteArma e){
+                  //  System.out.println("*VOCÊ NÃO TEM NÍVEL SUFICIENTE PARA EQUIPAR ESSA ARMA");
+                //}
             }
 
         }

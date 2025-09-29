@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        
+
         //Instanciando objetos de Heróis Concretos
         Paladino personagemPaladino = new Paladino();
         Feiticeira personagemFeiticeira = new Feiticeira();
@@ -22,14 +22,18 @@ public class Main {
 
         //Instanciando ConstrutorDeCenarioFixo (isto é, o gerador de fases)
         ConstrutorDeCenarioFixo geradorFases = new ConstrutorDeCenarioFixo(personagemAtual);
+
+        boolean flag = geradorFases.Menu();
+        if (! flag) { return; }
         
         // Variáveis de contagem
         int contRound;
 
         // Lista de fases
-        int nFases = 2; // Número de fases
+        Dificuldade difi = geradorFases.EscolherDificuldade();
+        int nFases = geradorFases.EscolherNumeroDeFases(); // Número de fases
         FaseCombate FaseAtual;
-        iFase[] listaFases = geradorFases.gerar(nFases, Dificuldade.FACIL);
+        iFase[] listaFases = geradorFases.gerar(nFases, difi);
      
         // Exibe a introdução da campanha
         geradorFases.Intro();
@@ -83,15 +87,14 @@ public class Main {
                     if(monstroAtual.estaVivo()){
                         iacaoDeCombate ataqueMonstro = monstroAtual.escolherAcao(personagemAtual);
                         ataqueMonstro.executar(monstroAtual, personagemAtual);
-                    }
+                    } 
 
                     Thread.sleep(700);
 
                     // Exibem-se os status de cada combatente
                     geradorFases.Status(personagemAtual, monstroAtual);
                     Thread.sleep(1200);
-                    
-                } 
+                }               
 
                 // Checagem se a emboscada é ativada
                 emboscada.executar(personagemAtual);
@@ -102,6 +105,9 @@ public class Main {
 
                 // Checagem se o herói continua vivo após o fim da batalha
                 if(! personagemAtual.estaVivo()){ geradorFases.Derrota(); return; } 
+
+                flag = geradorFases.posTurno(personagemAtual, monstroAtual);
+                if (! flag) { return; }
                 
             }
 
