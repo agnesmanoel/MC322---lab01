@@ -1,9 +1,8 @@
 package com.rpg.personagens;
-import java.util.Random;
-
 import com.rpg.combate.AtaqueHeroiSimples;
 import com.rpg.combate.AtaquePocaoAstral;
-import com.rpg.combate.iacaoDeCombate;
+import com.rpg.combate.InterfaceAcaoDeCombate;
+import java.util.Random;
 
 public class Feiticeira extends HeroiAbstrato {
 
@@ -20,7 +19,7 @@ public class Feiticeira extends HeroiAbstrato {
      * Método responsável por escolher, aleatoriamente, a ação de combate da Feiticeira. 
      * Ela tem 65% de aplicar golpe normal sobre o alvo; e 35% de utilizar a Habilidade Especial.
      */
-    public iacaoDeCombate escolherAcao(iCombatente alvo) {
+    public InterfaceAcaoDeCombate escolherAcao(InterfaceCombatente alvo) {
         Random random = new Random();
         int flagAtac = random.nextInt(0, 100);
         if (flagAtac <= 65) { return this.listaCombates.get(0); }

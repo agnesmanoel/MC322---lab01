@@ -2,7 +2,7 @@ package com.rpg.cenario;
 import com.rpg.personagens.HeroiAbstrato;
 import com.rpg.personagens.MonstroAbstrato;
 
-public class FaseCombate implements iFase {
+public class FaseCombate implements InterfaceFase {
 
     private TipoDeCenario cenario;
     public MonstroAbstrato[] listaMonstros;

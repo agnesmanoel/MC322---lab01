@@ -1,5 +1,5 @@
 package com.rpg.itens;
-abstract public class Arma implements iItem {
+abstract public class Arma implements InterfaceItem {
 
     protected String nome;
     public  int dano;

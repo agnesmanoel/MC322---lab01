@@ -15,7 +15,7 @@ import com.rpg.personagens.MonstroAbstrato;
 import com.rpg.personagens.Paladino;
 import com.rpg.util.InputManager;
 
-public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
+public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
     
     static  String nomePersonagem;
 
@@ -331,9 +331,9 @@ public class ConstrutorDeCenarioFixo implements iGeradorDeFases{
 
     // Método gerador de fases.
     @Override
-    public iFase[] gerar(int quantidadeDeFases, Dificuldade dificuldade) {
+    public InterfaceFase[] gerar(int quantidadeDeFases, Dificuldade dificuldade) {
 
-        iFase[] result = new iFase[quantidadeDeFases];
+        InterfaceFase[] result = new InterfaceFase[quantidadeDeFases];
         int nivel = 0;
         TipoDeCenario cenario;
         MonstroAbstrato[] listaMonstro;

@@ -1,19 +1,18 @@
 package com.rpg.combate;
-import java.util.Random;
-
 import com.rpg.exception.HabilidadeAntesdeVidaSuficiente;
 import com.rpg.personagens.HeroiAbstrato;
+import com.rpg.personagens.InterfaceCombatente;
 import com.rpg.personagens.MonstroAbstrato;
-import com.rpg.personagens.iCombatente;
+import java.util.Random;
 
-public class AtaquePocaoAstral implements iacaoDeCombate{
+public class AtaquePocaoAstral implements InterfaceAcaoDeCombate{
 
     /**
      * Método que implementa a habilidade especial da Feiticeira. Em sua ação,
      * quando o número sorteado + o acaso >= 50, ela é capaz de roubar vida do inimigo,
      * infligindo dano ao mesmo tempo em que recupera sua prória vida.
      */
-    public void executar(iCombatente usuario, iCombatente alvo) throws HabilidadeAntesdeVidaSuficiente{
+    public void executar(InterfaceCombatente usuario, InterfaceCombatente alvo) throws HabilidadeAntesdeVidaSuficiente{
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
 

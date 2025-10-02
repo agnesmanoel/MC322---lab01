@@ -1,6 +1,6 @@
 package com.rpg.personagens;
 import com.rpg.combate.AtaqueMonstroSimples;
-import com.rpg.combate.iacaoDeCombate;
+import com.rpg.combate.InterfaceAcaoDeCombate;
 import com.rpg.itens.Amuleto;
 import com.rpg.itens.Arma;
 import com.rpg.itens.Coroa;
@@ -32,6 +32,6 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
      * Por enquanto, ele, tal como todos os demais monstros, possuem apenas
      * um ataque disponível.
      */
-    public iacaoDeCombate escolherAcao(iCombatente alvo) { return this.listaCombates.get(0); } 
+    public InterfaceAcaoDeCombate escolherAcao(InterfaceCombatente alvo) { return this.listaCombates.get(0); } 
 
 }

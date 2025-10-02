@@ -1,11 +1,10 @@
 package com.rpg.personagens;
+import com.rpg.itens.Arma;
+import com.rpg.itens.InterfaceItem;
+import com.rpg.itens.InterfaceLootavel;
 import java.util.Random;
 
-import com.rpg.itens.Arma;
-import com.rpg.itens.iItem;
-import com.rpg.itens.iLootavel;
-
-public abstract class MonstroAbstrato extends PersonagemAbstrato implements iLootavel{
+public abstract class MonstroAbstrato extends PersonagemAbstrato implements InterfaceLootavel{
     
     public int xpConcedido;
     public String fraseDeEfeito;
@@ -70,7 +69,7 @@ public abstract class MonstroAbstrato extends PersonagemAbstrato implements iLoo
      * da lista de Armas.
      */
     @Override
-    public iItem droparLoot() {
+    public InterfaceItem droparLoot() {
         Random random = new Random();
         int numAleat = random.nextInt(0,3);
 

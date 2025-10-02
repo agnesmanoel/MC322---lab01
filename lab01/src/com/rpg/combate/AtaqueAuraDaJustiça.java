@@ -1,18 +1,17 @@
 package com.rpg.combate;
-import java.util.Random;
-
 import com.rpg.exception.HabilidadeAntesdeVidaSuficiente;
 import com.rpg.personagens.HeroiAbstrato;
+import com.rpg.personagens.InterfaceCombatente;
 import com.rpg.personagens.MonstroAbstrato;
-import com.rpg.personagens.iCombatente;
+import java.util.Random;
 
-public class AtaqueAuraDaJustiça implements iacaoDeCombate {
+public class AtaqueAuraDaJustiça implements InterfaceAcaoDeCombate {
 
     /**
      * Método da habilidade especial do Paladino. Quando o número sorteado + 5*(nível+1) + acaso 
      * >= 70%, ele é capaz de infligir quantidades massivas de dano.
      */
-    public void executar (iCombatente usuario, iCombatente alvo) throws HabilidadeAntesdeVidaSuficiente{
+    public void executar (InterfaceCombatente usuario, InterfaceCombatente alvo) throws HabilidadeAntesdeVidaSuficiente{
 
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;

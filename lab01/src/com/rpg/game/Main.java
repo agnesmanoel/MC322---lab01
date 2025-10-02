@@ -1,18 +1,17 @@
 package com.rpg.game;
-import java.util.Random;
-
 import com.rpg.cenario.ConstrutorDeCenarioFixo;
 import com.rpg.cenario.Dificuldade;
 import com.rpg.cenario.Emboscada;
 import com.rpg.cenario.FaseCombate;
-import com.rpg.cenario.iEvento;
-import com.rpg.cenario.iFase;
-import com.rpg.combate.iacaoDeCombate;
+import com.rpg.cenario.InterfaceEvento;
+import com.rpg.cenario.InterfaceFase;
+import com.rpg.combate.InterfaceAcaoDeCombate;
 import com.rpg.exception.HabilidadeAntesdeVidaSuficiente;
 import com.rpg.personagens.Feiticeira;
 import com.rpg.personagens.HeroiAbstrato;
 import com.rpg.personagens.MonstroAbstrato;
 import com.rpg.personagens.Paladino;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -22,7 +21,7 @@ public class Main {
         Feiticeira personagemFeiticeira = new Feiticeira();
 
         // Instancindo emboscada
-        iEvento emboscada = new Emboscada();
+        InterfaceEvento emboscada = new Emboscada();
 
         // Gerador de números aleatórios
         Random random = new Random();
@@ -47,7 +46,7 @@ public class Main {
         Dificuldade difi = geradorFases.EscolherDificuldade();
         int nFases = geradorFases.EscolherNumeroDeFases(); // Número de fases
         FaseCombate FaseAtual;
-        iFase[] listaFases = geradorFases.gerar(nFases, difi);
+        InterfaceFase[] listaFases = geradorFases.gerar(nFases, difi);
      
         // Exibe a introdução da campanha
         geradorFases.Intro();
@@ -88,7 +87,7 @@ public class Main {
                     System.out.println("| Turno: " + contRound + " |\r\n");
                     Thread.sleep(800);
                     // Ataque do herói
-                    iacaoDeCombate ataque = personagemAtual.escolherAcao(monstroAtual);
+                    InterfaceAcaoDeCombate ataque = personagemAtual.escolherAcao(monstroAtual);
                     
                     try {
                         ataque.executar(personagemAtual,monstroAtual);
@@ -99,7 +98,7 @@ public class Main {
                     
                     // Caso o monstro sobreviva ao ataque, tem a chance de contra-atacar
                     if(monstroAtual.estaVivo()){
-                        iacaoDeCombate ataqueMonstro = monstroAtual.escolherAcao(personagemAtual);
+                        InterfaceAcaoDeCombate ataqueMonstro = monstroAtual.escolherAcao(personagemAtual);
                         ataqueMonstro.executar(monstroAtual, personagemAtual);
                     } 
 

@@ -1,7 +1,7 @@
 package com.rpg.cenario;
 import com.rpg.personagens.HeroiAbstrato;
 
-public class Emboscada implements iEvento {
+public class Emboscada implements InterfaceEvento {
 
     /* 
      * Método responsável por verificar atiavação da emboscada.

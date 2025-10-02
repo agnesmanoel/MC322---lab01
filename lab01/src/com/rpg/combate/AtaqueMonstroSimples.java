@@ -1,13 +1,12 @@
 package com.rpg.combate;
+import com.rpg.personagens.InterfaceCombatente;
+import com.rpg.personagens.MonstroAbstrato;
 import java.util.Random;
 
-import com.rpg.personagens.MonstroAbstrato;
-import com.rpg.personagens.iCombatente;
-
-public class AtaqueMonstroSimples implements iacaoDeCombate {
+public class AtaqueMonstroSimples implements InterfaceAcaoDeCombate {
 
     // Método de ataque simples dos monstros.
-    public void executar(iCombatente usuario, iCombatente alvo) {
+    public void executar(InterfaceCombatente usuario, InterfaceCombatente alvo) {
         MonstroAbstrato monstro = (MonstroAbstrato) usuario;
 
         int dano;

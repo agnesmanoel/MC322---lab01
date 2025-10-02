@@ -1,4 +1,4 @@
 package com.rpg.itens;
-public interface iItem {
+public interface InterfaceItem {
     String getNome();
 }

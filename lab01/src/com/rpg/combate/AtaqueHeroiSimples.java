@@ -1,14 +1,13 @@
 package com.rpg.combate;
+import com.rpg.personagens.HeroiAbstrato;
+import com.rpg.personagens.InterfaceCombatente;
+import com.rpg.personagens.MonstroAbstrato;
 import java.util.Random;
 
-import com.rpg.personagens.HeroiAbstrato;
-import com.rpg.personagens.MonstroAbstrato;
-import com.rpg.personagens.iCombatente;
-
-public class AtaqueHeroiSimples implements iacaoDeCombate {
+public class AtaqueHeroiSimples implements InterfaceAcaoDeCombate {
 
     // Método de ataque simples dos heróis.
-    public void executar(iCombatente usuario, iCombatente alvo) {
+    public void executar(InterfaceCombatente usuario, InterfaceCombatente alvo) {
 
         if (usuario instanceof HeroiAbstrato && alvo instanceof MonstroAbstrato) {
 

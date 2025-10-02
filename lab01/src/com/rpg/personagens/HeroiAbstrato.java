@@ -1,11 +1,10 @@
 package com.rpg.personagens;
+import com.rpg.combate.InterfaceAcaoDeCombate;
+import com.rpg.exception.mininsuficienteArma;
+import com.rpg.itens.Arma;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import com.rpg.combate.iacaoDeCombate;
-import com.rpg.exception.mininsuficienteArma;
-import com.rpg.itens.Arma;
 
 public abstract class HeroiAbstrato extends PersonagemAbstrato {
     
@@ -36,7 +35,7 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
         Random random = new Random();
         this.sorte = random.nextInt(0,100);
         this.fatorEspecial = 1;
-        List<iacaoDeCombate> listaCombates = new ArrayList<>();
+        List<InterfaceAcaoDeCombate> listaCombates = new ArrayList<>();
 
     }
 
@@ -130,7 +129,7 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
     /** 
      * Método abstrato de escolha da ação de combate.
      */
-    public abstract iacaoDeCombate escolherAcao(iCombatente alvo);
+    public abstract InterfaceAcaoDeCombate escolherAcao(InterfaceCombatente alvo);
 
     /**
      * Método para equipar arma encontrada após vitória em combate.

@@ -1,21 +1,20 @@
 package com.rpg.personagens;
+import com.rpg.combate.InterfaceAcaoDeCombate;
+import com.rpg.itens.Arma;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.rpg.combate.iacaoDeCombate;
-import com.rpg.itens.Arma;
-
-abstract class PersonagemAbstrato implements iCombatente{
+abstract class PersonagemAbstrato implements InterfaceCombatente{
     
     public  String nome;
     public  int PontosDeVida;
     public  int forca;
     protected String imagemURL;
     public Arma arma;
-    protected List<iacaoDeCombate> listaCombates = new ArrayList<>();
+    protected List<InterfaceAcaoDeCombate> listaCombates = new ArrayList<>();
 
 
     /**
