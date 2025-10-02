@@ -13,26 +13,21 @@ public class AtaqueHeroiSimples implements InterfaceAcaoDeCombate {
 
             HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
             MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
-            int dano;
             Random random = new Random();
             int numAleat = random.nextInt(0, 100);
 
-            int extra = 10 * usuarioHeroi.nivel;
-            if (usuarioHeroi.arma == null) {
-                dano = 0;
-            } else {
-                dano = usuarioHeroi.arma.dano;
-            }
+            int extra = 10 * usuarioHeroi.getNivel();
+            int dano = usuarioHeroi.getDanoArma();
 
             if (numAleat + extra > 30) {
-                dano += usuarioHeroi.forca;
+                dano += usuarioHeroi.getForca();
                 alvoMonstro.receberDano(dano);
 
-                System.out.println(usuarioHeroi.nome + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***");
-                System.out.println(usuarioHeroi.fraseDeEfeito);
+                System.out.println(usuarioHeroi.getNome() + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***");
+                System.out.println(usuarioHeroi.getFraseDeEfeito());
 
-                if (alvoMonstro.PontosDeVida <= 0) {
-                    usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
+                if (alvoMonstro.getPontosDeVida() <= 0) {
+                    usuarioHeroi.ganhaExperiencia(alvoMonstro.getXpConcedido());
                    // Arma armaLargada = (Arma) alvoMonstro.droparLoot();
                      //   try{
                        //     usuarioHeroi.equiparArma(armaLargada);
@@ -44,7 +39,7 @@ public class AtaqueHeroiSimples implements InterfaceAcaoDeCombate {
                 }  
             } 
             else {
-                System.out.println("\r" + usuarioHeroi.nome + ": *** ERROU O ATAQUE ***");
+                System.out.println("\r" + usuarioHeroi.getNome() + ": *** ERROU O ATAQUE ***");
             }
         } 
     }

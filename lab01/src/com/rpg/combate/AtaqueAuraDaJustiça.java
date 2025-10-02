@@ -16,36 +16,31 @@ public class AtaqueAuraDaJustiça implements InterfaceAcaoDeCombate {
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
 
-        int dano;
         Random random = new Random();
         int numAleat = random.nextInt(0, 100);
-        int extra = 5 * usuarioHeroi.fatorEspecial;
-        if (usuarioHeroi.arma == null) {
-            dano = 0;
-        } else {
-            dano = usuarioHeroi.arma.dano;
-        }
+        int extra = 5 * usuarioHeroi.getFatorEspecial();
+        int dano = usuarioHeroi.getDanoArma();
 
-        if(usuarioHeroi.PontosDeVida > 4 * (usuarioHeroi.nivel + 2)){
+        if(usuarioHeroi.getPontosDeVida() > 4 * (usuarioHeroi.getNivel() + 2)){
             System.out.println("cheguei aki");
             throw new HabilidadeAntesdeVidaSuficiente();
         }
 
 
-        int acaso = 10 * usuarioHeroi.sorte / 25;
-        if (usuarioHeroi.sorte <= 40) {
+        int acaso = 10 * usuarioHeroi.getSorte() / 25;
+        if (usuarioHeroi.getSorte() <= 40) {
             acaso = -acaso;
         }
 
-        if (numAleat + 5 * (usuarioHeroi.nivel + 1) + acaso > 70) {
-            dano += usuarioHeroi.forca + extra;
+        if (numAleat + 5 * (usuarioHeroi.getNivel() + 1) + acaso > 70) {
+            dano += usuarioHeroi.getForca() + extra;
             alvo.receberDano(dano);
 
-            System.out.println(usuarioHeroi.nome + ": *** ACERTOU A HABILIDADE ESPECIAL [ AURA DA JUSTIÇA ]: " + dano + " Dano ***");
-            System.out.println(usuarioHeroi.fraseVitoria);
+            System.out.println(usuarioHeroi.getNome() + ": *** ACERTOU A HABILIDADE ESPECIAL [ AURA DA JUSTIÇA ]: " + dano + " Dano ***");
+            System.out.println(usuarioHeroi.getFraseDeEfeito());
 
-            if (alvoMonstro.PontosDeVida <= 0) {
-                usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
+            if (alvoMonstro.getPontosDeVida() <= 0) {
+                usuarioHeroi.ganhaExperiencia(alvoMonstro.getXpConcedido());
                // Arma armaLargada = (Arma) alvoMonstro.droparLoot();
                 //try{
                   //  usuarioHeroi.equiparArma(armaLargada);
@@ -58,7 +53,7 @@ public class AtaqueAuraDaJustiça implements InterfaceAcaoDeCombate {
         }
 
         else {
-            System.out.println("\r" + usuarioHeroi.nome + ": *** ERROU A HABILIDADE ESPECIAL ***");
+            System.out.println("\r" + usuarioHeroi.getNome() + ": *** ERROU A HABILIDADE ESPECIAL ***");
         }
 
     }

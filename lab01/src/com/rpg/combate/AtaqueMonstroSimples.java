@@ -14,16 +14,16 @@ public class AtaqueMonstroSimples implements InterfaceAcaoDeCombate {
         int numAleat = random.nextInt(0,100);
 
         if (numAleat<75) { // definir melhor aqui o numAleat
-            dano = monstro.forca + monstro.arma.dano;
+            dano = monstro.getForca() + monstro.arma.dano;
             alvo.receberDano(dano);
 
-            System.out.println(monstro.nome + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***"); 
-            if (alvo.estaVivo()) {System.out.println(monstro.fraseDeEfeito);}
-            else {System.out.println(monstro.fraseVitoria);}
+            System.out.println(monstro.getNome() + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***"); 
+            if (alvo.getPontosDeVida() <= 0) {System.out.println(monstro.fraseDeEfeito);}
+            else {System.out.println(monstro.getFraseVitoria());}
             
         }
 
-        else {System.out.println(monstro.nome + ": *** ERROU O ATAQUE ***"); }
+        else {System.out.println(monstro.getNome() + ": *** ERROU O ATAQUE ***"); }
     }
         
     }

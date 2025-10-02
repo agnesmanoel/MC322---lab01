@@ -17,5 +17,9 @@ abstract public class Arma implements InterfaceItem {
     public String getNome() {
         return this.nome;
     }
+
+    public int getDano() {
+        return this.dano;
+    }
     
 }

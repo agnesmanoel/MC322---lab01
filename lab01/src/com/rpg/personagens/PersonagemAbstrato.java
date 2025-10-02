@@ -98,6 +98,28 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
         return this.nome;
     }
 
+    public int getPontosDeVida() {
+        return this.PontosDeVida;
+    }
+
+    public int getForca() {
+        return this.forca;
+    }
+
+    public String getArma() {
+        if (this.arma != null){
+            return this.arma.getNome();
+        }
+        else{ return "";}
+    }
+
+    public int getDanoArma() {
+        if (this.arma != null){
+            return this.arma.getDano();
+        }
+        else{ return 0;}
+    }
+
     /**
      * Método para checar se o personagem está vivo.
      */

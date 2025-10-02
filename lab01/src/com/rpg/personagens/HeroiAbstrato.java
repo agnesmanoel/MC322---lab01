@@ -39,13 +39,29 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
 
     }
 
+    public String getFraseDeEfeito() {
+        return this.fraseDeEfeito;
+    }
+
+    public int getNivel() {
+        return this.nivel;
+    }
+
+    public int getSorte() {
+        return this.sorte;
+    }
+
+    public int getFatorEspecial() {
+        return this.fatorEspecial;
+    }
+
     /**
      * Método para aumentar o nível do herói. A upgrade, ele recebe incremento de vida 
      * igual ao novo nível alcançado, e mais uma unidade de força.
      */
     protected  void ganhaNivel() {
         this.nivel ++;
-        this.PontosDeVida += this.nivel;
+        this.receberCura(this.nivel);
         this.forca ++;
         this.fatorEspecial++;
         Random random = new Random();

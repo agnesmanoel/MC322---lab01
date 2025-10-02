@@ -16,27 +16,27 @@ public class AtaquePocaoAstral implements InterfaceAcaoDeCombate{
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
 
-        if(usuarioHeroi.PontosDeVida > 4 * (usuarioHeroi.nivel + 2)){
+        if(usuarioHeroi.PontosDeVida > 4 * (usuarioHeroi.getNivel() + 2)){
             System.out.println("cheguei aki");
             throw new HabilidadeAntesdeVidaSuficiente();
         }
 
         Random random = new Random();
         int numAleat = random.nextInt(0,100);
-        int dano = (usuarioHeroi.nivel + 3) * usuarioHeroi.fatorEspecial ; 
+        int dano = (usuarioHeroi.getNivel() + 3) * usuarioHeroi.getFatorEspecial() ; 
 
-        int acaso = 10*usuarioHeroi.sorte/25; // Influência da sorte do personagem
-        if (usuarioHeroi.sorte <= 40) {acaso = - acaso;}
+        int acaso = 10*usuarioHeroi.getSorte()/25; // Influência da sorte do personagem
+        if (usuarioHeroi.getSorte() <= 40) {acaso = - acaso;}
 
-        if (numAleat + acaso > 50 && usuarioHeroi.PontosDeVida <= 4 * (usuarioHeroi.nivel + 2)) {
+        if (numAleat + acaso > 50 && usuarioHeroi.getPontosDeVida() <= 4 * (usuarioHeroi.getNivel() + 2)) {
             alvoMonstro.receberDano(dano);
-            usuarioHeroi.PontosDeVida += dano;
+            usuarioHeroi.receberCura(dano);
 
-            System.out.println(usuarioHeroi.nome + ": *** ACERTOU A HABILIDADE ESPECIAL [ POÇÃO ASTRAL ] :  " + dano + " Dano  +" + dano + " Vida ***");
-            System.out.println(usuarioHeroi.fraseDeEfeito);
+            System.out.println(usuarioHeroi.getNome() + ": *** ACERTOU A HABILIDADE ESPECIAL [ POÇÃO ASTRAL ] :  " + dano + " Dano  +" + dano + " Vida ***");
+            System.out.println(usuarioHeroi.getFraseDeEfeito());
 
-            if (alvoMonstro.PontosDeVida <= 0) {
-                usuarioHeroi.ganhaExperiencia(alvoMonstro.xpConcedido);
+            if (alvoMonstro.getPontosDeVida() <= 0 ) {
+                usuarioHeroi.ganhaExperiencia(alvoMonstro.getXpConcedido());
                 // Arma armaLargada = alvoMonstro.largaArma();
                // Arma armaLargada = (Arma) alvoMonstro.droparLoot();
                     //try {usuarioHeroi.equiparArma(armaLargada);} catch(mininsuficienteArma e) {
@@ -46,7 +46,7 @@ public class AtaquePocaoAstral implements InterfaceAcaoDeCombate{
             } 
         }
         else {
-            System.out.println("\r" + usuarioHeroi.nome + ": *** ERROU A HABILIDADE ESPECIAL ***");
+            System.out.println("\r" + usuarioHeroi.getNome() + ": *** ERROU A HABILIDADE ESPECIAL ***");
         }
     }
     

@@ -33,6 +33,18 @@ public abstract class MonstroAbstrato extends PersonagemAbstrato implements Inte
         this.fraseApresentacao = fraseApresentacao;
         this.listaDeArmasParaLargar = new Arma[3]; 
     }
+
+    public int getXpConcedido() {
+        return this.xpConcedido;
+    }
+
+    public String getFraseEfeito() {
+        return this.fraseDeEfeito;
+    }
+    
+    public String getFraseVitoria() {
+        return this.fraseVitoria;
+    }
     
     /**
      * Método de conversão do objeto em string a partir de overide sobre toString() e chamada 
