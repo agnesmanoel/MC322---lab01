@@ -1,9 +1,4 @@
 package com.rpg.cenario;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Random;
-import java.util.Scanner;
-
 import com.rpg.exception.mininsuficienteArma;
 import com.rpg.itens.Arma;
 import com.rpg.personagens.Esqueleto;
@@ -14,6 +9,10 @@ import com.rpg.personagens.MonarcaEsqueleto;
 import com.rpg.personagens.MonstroAbstrato;
 import com.rpg.personagens.Paladino;
 import com.rpg.util.InputManager;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Random;
+import java.util.Scanner;
 
 public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
     
@@ -329,11 +328,10 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         
     }
 
-    // Método gerador de fases.
-    @Override
-    public InterfaceFase[] gerar(int quantidadeDeFases, Dificuldade dificuldade) {
+    // Método gerador de fases
+    public FaseCombate[] gerar(int quantidadeDeFases, Dificuldade dificuldade) {
 
-        InterfaceFase[] result = new InterfaceFase[quantidadeDeFases];
+        FaseCombate[] result = new FaseCombate[quantidadeDeFases];
         int nivel = 0;
         TipoDeCenario cenario;
         MonstroAbstrato[] listaMonstro;

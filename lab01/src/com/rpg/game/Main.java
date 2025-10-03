@@ -4,7 +4,6 @@ import com.rpg.cenario.Dificuldade;
 import com.rpg.cenario.Emboscada;
 import com.rpg.cenario.FaseCombate;
 import com.rpg.cenario.InterfaceEvento;
-import com.rpg.cenario.InterfaceFase;
 import com.rpg.combate.InterfaceAcaoDeCombate;
 import com.rpg.exception.HabilidadeAntesdeVidaSuficiente;
 import com.rpg.personagens.Feiticeira;
@@ -46,7 +45,7 @@ public class Main {
         Dificuldade difi = geradorFases.EscolherDificuldade();
         int nFases = geradorFases.EscolherNumeroDeFases(); // Número de fases
         FaseCombate FaseAtual;
-        InterfaceFase[] listaFases = geradorFases.gerar(nFases, difi);
+       FaseCombate[] listaFases = geradorFases.gerar(nFases, difi);
      
         // Exibe a introdução da campanha
         geradorFases.Intro();

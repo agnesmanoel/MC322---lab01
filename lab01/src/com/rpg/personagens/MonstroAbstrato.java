@@ -80,10 +80,9 @@ public abstract class MonstroAbstrato extends PersonagemAbstrato implements Inte
      * Seleciona-se, aleatoriamente, um dos três itens que podem ser largados
      * da lista de Armas.
      */
-    @Override
     public InterfaceItem droparLoot() {
         Random random = new Random();
-        int numAleat = random.nextInt(0,3);
+        int numAleat = random.nextInt(0,this.listaDeArmasParaLargar.length);
 
         return this.listaDeArmasParaLargar[numAleat];
     }

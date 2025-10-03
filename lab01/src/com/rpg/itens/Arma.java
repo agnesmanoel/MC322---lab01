@@ -13,7 +13,6 @@ abstract public class Arma implements InterfaceItem {
         this.intro = txt;
     }
 
-    @Override
     public String getNome() {
         return this.nome;
     }
