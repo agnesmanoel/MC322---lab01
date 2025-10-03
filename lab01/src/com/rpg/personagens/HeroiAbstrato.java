@@ -8,13 +8,13 @@ import java.util.Random;
 
 public abstract class HeroiAbstrato extends PersonagemAbstrato {
     
-    public int nivel;
+    protected int nivel;
     protected int experiencia;
-    public  String fraseDeEfeito;
-    public  String fraseVitoria;
+    protected  String fraseDeEfeito;
+    protected  String fraseVitoria;
     protected int expProximoNivel;
-    public int sorte;
-    public int fatorEspecial;
+    protected int sorte;
+    protected int fatorEspecial;
 
     /**
      * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
@@ -23,10 +23,11 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
      * @param f : força;
      * @param fraseEfeito : texto para frase dita quando se ataca inimigo;
      * @param fraseVitoria : texto para frase dita quando se usa a habilidade especial;
-     * @param imageURL : imagem ASCII do personagem.
+     * @param imageURL : imagem ASCII do personagem;
+     * @param descr : descrição do herói.
      */
-    public HeroiAbstrato(String n, int pv, int f, String fraseEfeito, String fraseVitoria, String imageURL) {
-        super(n, pv, f, imageURL, null);
+    public HeroiAbstrato(String n, int pv, int f, String fraseEfeito, String fraseVitoria, String imageURL, String descr) {
+        super(n, pv, f, imageURL, null, descr);
         this.nivel = 0;
         this.experiencia = 0;
         this.fraseDeEfeito = fraseEfeito;

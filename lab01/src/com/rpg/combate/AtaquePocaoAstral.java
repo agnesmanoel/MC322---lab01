@@ -16,7 +16,7 @@ public class AtaquePocaoAstral implements InterfaceAcaoDeCombate{
         HeroiAbstrato usuarioHeroi = (HeroiAbstrato) usuario;
         MonstroAbstrato alvoMonstro = (MonstroAbstrato) alvo;
 
-        if(usuarioHeroi.PontosDeVida > 4 * (usuarioHeroi.getNivel() + 2)){
+        if(usuarioHeroi.getPontosDeVida() > 4 * (usuarioHeroi.getNivel() + 2)){
             System.out.println("cheguei aki");
             throw new HabilidadeAntesdeVidaSuficiente();
         }

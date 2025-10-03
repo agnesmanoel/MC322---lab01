@@ -9,11 +9,12 @@ import java.util.Scanner;
 
 abstract class PersonagemAbstrato implements InterfaceCombatente{
     
-    public  String nome;
-    public  int PontosDeVida;
-    public  int forca;
+    protected  String nome;
+    protected String descr;
+    protected  int PontosDeVida;
+    protected  int forca;
     protected String imagemURL;
-    public Arma arma;
+    protected Arma arma;
     protected List<InterfaceAcaoDeCombate> listaCombates = new ArrayList<>();
 
 
@@ -22,14 +23,50 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
      * @param n : nome;
      * @param pv : vida;
      * @param f : força;
-     * @param URL : imagem ASCII do personagem.
+     * @param URL : imagem ASCII do personagem;
+     * @param arma : arma do personagem;
+     * @param descr : descrição do personagem.
      */
-    public PersonagemAbstrato(String n, int pv, int f, String URL, Arma arma) {
+    public PersonagemAbstrato(String n, int pv, int f, String URL, Arma arma, String descr) {
         this.nome = n;
         this.PontosDeVida = pv;
         this.forca = f;
         this.imagemURL = URL;
         this.arma = arma;
+        this.descr = descr;
+    }
+
+    /**
+    *  Método getter para retornar o nome do personagem.
+    * */
+    public  String getNome(){
+        return this.nome;
+    }
+
+    public  String getDescricao(){
+        return this.descr;
+    }
+
+    public int getPontosDeVida() {
+        return this.PontosDeVida;
+    }
+
+    public int getForca() {
+        return this.forca;
+    }
+
+    public String getArma() {
+        if (this.arma != null){
+            return this.arma.getNome();
+        }
+        else{ return "";}
+    }
+
+    public int getDanoArma() {
+        if (this.arma != null){
+            return this.arma.getDano();
+        }
+        else{ return 0;}
     }
 
     /**
@@ -89,35 +126,6 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
     * */
     public void exibirStatus() {
        System.out.println(this);
-    }
-
-    /**
-     *  Método getter para retornar o nome do personagem.
-    * */
-    public  String getNome(){
-        return this.nome;
-    }
-
-    public int getPontosDeVida() {
-        return this.PontosDeVida;
-    }
-
-    public int getForca() {
-        return this.forca;
-    }
-
-    public String getArma() {
-        if (this.arma != null){
-            return this.arma.getNome();
-        }
-        else{ return "";}
-    }
-
-    public int getDanoArma() {
-        if (this.arma != null){
-            return this.arma.getDano();
-        }
-        else{ return 0;}
     }
 
     /**

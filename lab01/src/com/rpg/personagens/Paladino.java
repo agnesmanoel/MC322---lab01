@@ -11,7 +11,20 @@ public class Paladino extends HeroiAbstrato{
      * Método construtor de Paladino. O objeto é inicializado com 12 de vida e 9 de força.
      */
     public Paladino() {
-        super("Paladino", 12, 9, "- Paladino: Os meus deuses ajudam os justos!", "- Paladino: Que sua alma perturbada descanse enfim...","lab01/imagens-texto/paladino.txt");
+        super("Paladino", 12, 9, 
+              "- Paladino: Os meus deuses ajudam os justos!", 
+              "- Paladino: Que sua alma perturbada descanse enfim...",
+              "lab01/imagens-texto/paladino.txt", 
+              """
+              * Paladino *
+               ___________________________________________________________  
+              | O nobre, o altivo, o escolhido guerreiro de               |
+              | Tchutchuwamako.                                           |
+              | Sua armadura e espada lhe conferem grande força contra as |
+              | trevas.                                                   |
+              | Em momentos de fraqueza, seus avanços são impulsionados   |
+              | pela Aura da Justiça.                                     |
+              |___________________________________________________________|""");
         this.listaCombates.add(new AtaqueHeroiSimples());
         this.listaCombates.add(new AtaqueAuraDaJustiça());
     }

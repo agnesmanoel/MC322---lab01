@@ -227,21 +227,22 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
             switch (input) {
                 
                 case 2: 
-                    Status(new Paladino());
+                    Paladino test_p = new Paladino();
+                    printSideBySideBottom(test_p.getDescricao(), test_p.getFileImage(), "       ");
                     System.out.println("\n");
-                    Status(new Feiticeira());
-                    System.out.println("\n");
-                    
+                    Feiticeira test_f = new Feiticeira();
+                    printSideBySideBottom(test_f.getDescricao(), test_f.getFileImage(), "       ");
                     break;
                 case 3:
-                    Status(new Fantasma());
+                    Fantasma test_fant = new Fantasma(0, 0, Dificuldade.FACIL.ArmasParaLargar());
+                    printSideBySideBottom(test_fant.getDescricao(), test_fant.getFileImage(), "       ");
                     System.out.println("\n");
-                    Status(new Esqueleto());
+                    Esqueleto test_esq = new Esqueleto(0, 0, Dificuldade.FACIL.ArmasParaLargar());
+                    printSideBySideBottom(test_esq.getDescricao(), test_esq.getFileImage(), "       ");
                     System.out.println("\n");
-                    Status(new MonarcaEsqueleto());
-                    System.out.println("\n");
+                    MonarcaEsqueleto test_m = new MonarcaEsqueleto(0, 0, Dificuldade.FACIL.ArmasParaLargar());
+                    printSideBySideBottom(test_m.getDescricao(), test_m.getFileImage(), "       ");
                     break;
-                    
             }
             input = InputManager.lerInteiro(msg, 1, 4);
             System.out.println("\n");
@@ -285,7 +286,6 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         return input;
     }
     
-
     public static boolean posTurno(HeroiAbstrato heroi, MonstroAbstrato monstro) {
 
         String texto =  "________________________\n";

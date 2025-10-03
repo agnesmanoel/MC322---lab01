@@ -2,7 +2,6 @@ package com.rpg.personagens;
 import com.rpg.combate.AtaqueMonstroSimples;
 import com.rpg.combate.InterfaceAcaoDeCombate;
 import com.rpg.itens.Arma;
-import com.rpg.itens.Pedra;
 import com.rpg.itens.Punhal;
 
 public  class Fantasma extends MonstroAbstrato  {
@@ -11,16 +10,23 @@ public  class Fantasma extends MonstroAbstrato  {
      * Método construtor de Fantasma. O objeto é inicializado com 5 de vida, 2 de força e 
      * 2 xp concedidos.
      */
-    public Fantasma(){
-        super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt", new Punhal(), 0, 0);
-        this.listaDeArmasParaLargar[0] = new Punhal();
-        this.listaDeArmasParaLargar[1] = new Pedra();
-        this.listaDeArmasParaLargar[2] = new Pedra();
-        this.listaCombates.add(new AtaqueMonstroSimples());
-
-    }
     public Fantasma(int adVida, int adForca, Arma[] armasParaLargar){
-        super("Fantasma", 5, 2, 2, "- Fantasma: SiNta A mInHa DoOoOr...","- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!","- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!","lab01/imagens-texto/fantasma.txt", new Punhal(), adVida, adForca);
+        super("Fantasma", 5, 2, 2, 
+              "- Fantasma: SiNta A mInHa DoOoOr...",
+              "- Fantasma: comPaRtiLHE da mInHa SolIdÃOoOo!",
+              "- Fantasma: SoOomOos as almas daqueles deixaAaAdoOos na mAsMoOorra... e AgoRaA qUeREmOs... VINGANÇA!",
+              "lab01/imagens-texto/fantasma.txt",
+              new Punhal(),
+              """
+              * Fantasma *
+               ___________________________________________________________  
+              | Seres acometidos por uma paralisante melancolia, e ainda  | 
+              | assim, inflados por uma incessante sede de vingança.      |
+              | Temendo a solidão do esquecimento, costumam vagar em      |
+              | bandos.                                                   |
+              |___________________________________________________________|""", 
+              adVida,
+              adForca);
         this.listaDeArmasParaLargar = armasParaLargar.clone();
         // this.listaDeArmasParaLargar[0] = new Punhal();
         // this.listaDeArmasParaLargar[1] = new Pedra();
@@ -28,7 +34,6 @@ public  class Fantasma extends MonstroAbstrato  {
         this.listaCombates.add(new AtaqueMonstroSimples());
 
     }
-
 
     /**
      * Método responsável por escolher ação de combate do Fantasma.

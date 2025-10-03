@@ -14,7 +14,7 @@ public class AtaqueMonstroSimples implements InterfaceAcaoDeCombate {
         int numAleat = random.nextInt(0,100);
 
         if (numAleat<75) { // definir melhor aqui o numAleat
-            dano = monstro.getForca() + monstro.arma.dano;
+            dano = monstro.getForca() + monstro.getDanoArma();
             alvo.receberDano(dano);
 
             System.out.println(monstro.getNome() + ": *** ACERTOU O ATAQUE : " + dano + " Dano ***"); 

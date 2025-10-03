@@ -9,7 +9,7 @@ public class Emboscada implements InterfaceEvento {
      * ativada.
      */
     public boolean verificarGatilho(HeroiAbstrato usuario) {
-        return usuario.sorte <= 35;
+        return usuario.getSorte() <= 35;
     }
 
     /*
