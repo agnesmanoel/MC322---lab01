@@ -1,18 +1,26 @@
 package com.rpg.cenario;
 import com.rpg.personagens.HeroiAbstrato;
 
+/**
+ * Classe que implementa InterfaceEvento, representando uma emboscada/armadilha
+ * ao longo da campanha, quando o herói pisa em espinhos envenenados.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class Emboscada implements InterfaceEvento {
 
-    /* 
+    /**
      * Método responsável por verificar atiavação da emboscada.
      * Caso a sorte do personagem está abaixo de 35%, ela é
      * ativada.
+     * 
+     * @return : true, se a emboscada é ativada; false, caso contrário.
      */
     public boolean verificarGatilho(HeroiAbstrato usuario) {
         return usuario.getSorte() <= 35;
     }
 
-    /*
+    /**
      * Método responsável por executar, de fato, a emboscada.
      * O persoagem leva 1 de dano ao pisar em um espinho 
      * envenenado.

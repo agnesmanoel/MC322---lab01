@@ -5,6 +5,13 @@ import com.rpg.personagens.InterfaceCombatente;
 import com.rpg.personagens.MonstroAbstrato;
 import java.util.Random;
 
+/**
+ * Classe que implementa InterfaceAcaoDeCombate, representando a ação de combate
+ * de um Paladino, quando utiliza sua habilidade especial. Como particularidade,
+ * o ataque inflige alto dano no oponente.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class AtaqueAuraDaJustiça implements InterfaceAcaoDeCombate {
 
     /**
@@ -41,13 +48,6 @@ public class AtaqueAuraDaJustiça implements InterfaceAcaoDeCombate {
 
             if (alvoMonstro.getPontosDeVida() <= 0) {
                 usuarioHeroi.ganhaExperiencia(alvoMonstro.getXpConcedido());
-               // Arma armaLargada = (Arma) alvoMonstro.droparLoot();
-                //try{
-                  //  usuarioHeroi.equiparArma(armaLargada);
-                //} 
-                //catch(mininsuficienteArma e){
-                  //  System.out.println("*VOCÊ NÃO TEM NÍVEL SUFICIENTE PARA EQUIPAR ESSA ARMA");
-                //}
             }
 
         }

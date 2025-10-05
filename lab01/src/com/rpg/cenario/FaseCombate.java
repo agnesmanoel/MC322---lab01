@@ -2,6 +2,11 @@ package com.rpg.cenario;
 import com.rpg.personagens.HeroiAbstrato;
 import com.rpg.personagens.MonstroAbstrato;
 
+/**
+ * Classe que implementa InterfaceFase, representando uma fase de combate.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class FaseCombate implements InterfaceFase {
 
     private TipoDeCenario cenario;
@@ -10,8 +15,9 @@ public class FaseCombate implements InterfaceFase {
 
     /**
      * Método construtor da fase de combate.
-     * @param cenario : cenário em que se passa a fase;
-     * @param listaMonstros : lista de monstros a serem enfrentados.
+     * 
+     * @param cenario : cenário em que se passa a fase (TipoDeCenario);
+     * @param listaMonstros : lista de monstros a serem enfrentados (MonstroAbstrato[]).
      */
     public FaseCombate(TipoDeCenario cenario, MonstroAbstrato[] listaMonstros) {
         this.cenario = cenario;
@@ -21,6 +27,7 @@ public class FaseCombate implements InterfaceFase {
 
     /**
      * Método responsável por dar início à fase, introduzindo o cenário.
+     * 
      * @param heroi : heroi da campanha.
      */
     public void iniciar(HeroiAbstrato heroi) {
@@ -40,8 +47,9 @@ public class FaseCombate implements InterfaceFase {
     }
 
     /**
-     * Método responsável por número de monstros já entrentados na fase.
-     * @return this.contMonstro 
+     * Método responsável por informar o número de monstros já entrentados na fase.
+     * 
+     * @return this.contMonstro  (int)
      */
     public int getContMonstro () { return this.contMonstro; }
 

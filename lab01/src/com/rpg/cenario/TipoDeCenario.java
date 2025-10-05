@@ -1,6 +1,11 @@
 package com.rpg.cenario;
 import com.rpg.personagens.HeroiAbstrato;
 
+/**
+ * Classe Enum para todos os cenários da campanha.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public enum TipoDeCenario {
 
     PORTÃO ("Os portões do reino são assolados por multidões de monstros..."),
@@ -9,11 +14,16 @@ public enum TipoDeCenario {
 
     private final String descricao;
 
+    /**
+     * Método construtor do tipo de cenário.
+     * 
+     * @param descricao : descrição do cenário (String).
+     */
     private TipoDeCenario(String descricao) {
         this.descricao = descricao;
     }
 
-    /*
+    /**
      * Pequena introdução, e ambientação dos cenários.
      */
     void aplicarEfeitos(HeroiAbstrato heroi) {

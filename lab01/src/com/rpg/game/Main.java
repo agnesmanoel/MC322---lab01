@@ -91,7 +91,7 @@ public class Main {
                     try {
                         ataque.executar(personagemAtual,monstroAtual);
                     } catch (HabilidadeAntesdeVidaSuficiente e) {
-                        System.out.println("Mais vida do que o necessário");
+                        System.out.println(personagemAtual.getNome()+": *** VIDA MAIOR QUE EXIGIDO PARA HABILIDADE ESPECIAL ***");
                     }
 
                     

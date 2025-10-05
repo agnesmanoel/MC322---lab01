@@ -4,11 +4,17 @@ import com.rpg.combate.AtaquePocaoAstral;
 import com.rpg.combate.InterfaceAcaoDeCombate;
 import java.util.Random;
 
+/**
+ * Classe concreta que implementa HeróiAbstrato, representando uma Feiticeira.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class Feiticeira extends HeroiAbstrato {
 
     /** 
-     * Método construtor de Feiticeira. O objeto é inicializado com 16 de vida e 8 de força.
-     */
+     * Método construtor de Feiticeira. O objeto é inicializado com 16 de vida e 8 de força,
+     * sem arma, e dotado dos ataques AtaqueHeroiSimples e AtaquePocaoAstral.
+    */
     public Feiticeira () {
         super("Feiticeira", 16, 8, 
               "- Feiticeira: Você erra ao me subestimar, aberração...", 
