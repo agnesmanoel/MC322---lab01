@@ -75,7 +75,7 @@ public class InputManager {
                 
                 input = scanner.nextLine().trim();
                 
-                if (input.isEmpty()) {
+                if (input.equals("\n")) {
                     continue;
                 } 
 

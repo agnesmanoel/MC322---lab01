@@ -32,12 +32,12 @@ public enum Dificuldade {
     /*
      * Método "getter" para adicional de vida
      */
-    int AdicionalVida() {return this.adVida; }
+    public int AdicionalVida() {return this.adVida; }
 
     /*
      * Método "getter" para adicional de força
      */
-    int AdicionalForca() {return this.adForca; }
+    public int AdicionalForca() {return this.adForca; }
 
     Arma [] ArmasParaLargar() {
         
