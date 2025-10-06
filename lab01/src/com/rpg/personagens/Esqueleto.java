@@ -6,7 +6,11 @@ import com.rpg.combate.InterfaceAcaoDeCombate;
 import com.rpg.itens.Amuleto;
 import com.rpg.itens.Arma;
 
-
+/**
+ * Classe concreta que implementa MonstroAbstrato, representando um Esqueleto.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public  class Esqueleto extends MonstroAbstrato  {
     
     /** 
@@ -31,9 +35,6 @@ public  class Esqueleto extends MonstroAbstrato  {
               adVida,
              adForca);
         this.listaDeArmasParaLargar = armasParaLargar.clone();
-        // this.listaDeArmasParaLargar[0] = new Punhal();
-        // this.listaDeArmasParaLargar[1] = new Amuleto();
-        // this.listaDeArmasParaLargar[2] = new Pedra();
         this.listaCombates.add(new AtaqueMonstroSimples());
     }
 

@@ -1,4 +1,10 @@
 package com.rpg.itens;
+
+/**
+ * Classe concreta que implementa Arma, representando um Punhal Cerimonial.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class Punhal extends Arma{
 
     public Punhal() {

@@ -3,9 +3,18 @@ import com.rpg.personagens.InterfaceCombatente;
 import com.rpg.personagens.MonstroAbstrato;
 import java.util.Random;
 
+/**
+ * Classe que implementa InterfaceAcaoDeCombate, representando a ação de combate
+ * de um monstro qualquer, quando utiliza seu ataque simples.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class AtaqueMonstroSimples implements InterfaceAcaoDeCombate {
 
-    // Método de ataque simples dos monstros.
+    /**
+     * Método que implementa o ataque simples de um monstro. O usuário 
+     * possui 75% de chance de acerto.
+     */
     public void executar(InterfaceCombatente usuario, InterfaceCombatente alvo) {
         MonstroAbstrato monstro = (MonstroAbstrato) usuario;
 

@@ -7,6 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe abstrata para todas as entidades vivas no jogo - até o momento,
+ *  heróis e monstros - implementa InterfaceCombatente. Aqui, são definidos 
+ * atributos e métodos essenciais. A título de exemplo, nome, vida, força, 
+ * imagem, arma e descrição, bem como seus respectivos getters, e modificadores.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 abstract class PersonagemAbstrato implements InterfaceCombatente{
     
     protected  String nome;
@@ -20,6 +28,7 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
 
     /**
      * Método construtor abstrato
+     * 
      * @param n : nome;
      * @param pv : vida;
      * @param f : força;
@@ -38,23 +47,45 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
 
     /**
     *  Método getter para retornar o nome do personagem.
-    * */
+    * 
+    * @return : nome do personagem (String).
+    */
     public  String getNome(){
         return this.nome;
     }
 
+    /**
+    * Método getter para retornar a descrição do personagem.
+    * 
+    * @return : descrição do personagem (String).
+    */
     public  String getDescricao(){
         return this.descr;
     }
 
+    /**
+    * Método getter para retornar a vida do personagem.
+    * 
+    * @return : vida do personagem (int).
+    */
     public int getPontosDeVida() {
         return this.PontosDeVida;
     }
 
+    /**
+    * Método getter para retornar a força do personagem.
+    * 
+    * @return : força do personagem (int).
+    */
     public int getForca() {
         return this.forca;
     }
 
+    /**
+    * Método getter para retornar o nome da arma do personagem.
+    * 
+    * @return : nome da arma do personagem (String);
+    */
     public String getArma() {
         if (this.arma != null){
             return this.arma.getNome();
@@ -62,6 +93,11 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
         else{ return "";}
     }
 
+    /**
+    * Método getter para retornar o dano da arma do personagem.
+    *    
+    * @return : dano da arma do personagem (int).
+    */
     public int getDanoArma() {
         if (this.arma != null){
             return this.arma.getDano();
@@ -70,20 +106,27 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
     }
 
     /**
-     *  Método para receber dano e, então, diminuir a vida do personagem. O método recebe:
-     *      dano.
-    * */
+    *  Método para receber dano e, então, diminuir a vida do personagem.
+    * 
+    * @param dano : dano a ser recebido (int).
+    */
     public void receberDano(int dano) {
         this.PontosDeVida = Math.max(this.PontosDeVida - dano, 0);
     }
 
+    /**
+    *  Método para receber cura e, então, aumentar a vida do personagem.
+    * 
+    * @param cura : cura a ser recebida (int).
+    */
     public void receberCura(int cura) {
         this.PontosDeVida = this.PontosDeVida += cura;
     }
 
     /** 
-     * Método de conversão do objeto em uma String através de override em toString.
-     * */
+    * Método de conversão do objeto em uma String através de override em toString.
+    * São exibidos nome, vida, força e dano da arma (caso exista).
+    */
     @Override
     public String toString() {
 
@@ -99,8 +142,10 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
     }
 
     /**
-     * Método para retornar imagem associada a um personagem.
-     * */
+    * Método para retornar imagem associada a um personagem.
+    * 
+    * @return : imagem do personagem (String).
+    */
     public String getFileImage(){
         String image = "\n";
         File imagem = new File(this.imagemURL);
@@ -123,14 +168,18 @@ abstract class PersonagemAbstrato implements InterfaceCombatente{
 
     /**
     *  Método inicial para exibir status de personagem.
-    * */
+    * 
+    * @return : status do personagem (String).
+    */
     public void exibirStatus() {
        System.out.println(this);
     }
 
     /**
-     * Método para checar se o personagem está vivo.
-     */
+    * Método para checar se o personagem está vivo.
+    * 
+    * @return : true, se a vida for maior que 0; false, caso contrário.
+    */
     public boolean estaVivo(){
         return this.PontosDeVida > 0;
     }

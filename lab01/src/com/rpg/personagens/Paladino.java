@@ -4,12 +4,17 @@ import com.rpg.combate.AtaqueHeroiSimples;
 import com.rpg.combate.InterfaceAcaoDeCombate;
 import java.util.Random;
 
+/**
+ * Classe concreta que implementa HeróiAbstrato, representando um Paladino.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class Paladino extends HeroiAbstrato{
     
-
     /** 
-     * Método construtor de Paladino. O objeto é inicializado com 12 de vida e 9 de força.
-     */
+    * Método construtor de Paladino. O objeto é inicializado com 12 de vida e 9 de força,
+    * sem arma, e dotado dos ataques AtaqueHeroiSimples e AtaqueAuraDaJustiça.
+    */
     public Paladino() {
         super("Paladino", 12, 9, 
               "- Paladino: Os meus deuses ajudam os justos!", 
@@ -30,9 +35,11 @@ public class Paladino extends HeroiAbstrato{
     }
 
     /**
-     * Método responsável por escolher, aleatoriamente, a ação de combate do Paladino. 
-     * Ele tem 65% de aplicar golpe normal sobre o alvo; e 35% de utilizar a Habilidade Especial.
-     */
+    * Método responsável por escolher, aleatoriamente, a ação de combate do Paladino. 
+    * Ele tem 65% de aplicar golpe normal sobre o alvo; e 35% de utilizar a Habilidade Especial.
+    *
+    * @return : ação de combate a ser executada (InterfaceAcaoDeCombate).
+    */
     public InterfaceAcaoDeCombate escolherAcao(InterfaceCombatente alvo) {
         Random random = new Random();
         int flagAtac = random.nextInt(0, 100);

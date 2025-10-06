@@ -4,6 +4,11 @@ import com.rpg.combate.InterfaceAcaoDeCombate;
 import com.rpg.itens.Arma;
 import com.rpg.itens.Punhal;
 
+/**
+ * Classe concreta que implementa MonstroAbstrato, representando um Fantasma.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public  class Fantasma extends MonstroAbstrato  {
     
     /** 
@@ -28,9 +33,6 @@ public  class Fantasma extends MonstroAbstrato  {
               adVida,
               adForca);
         this.listaDeArmasParaLargar = armasParaLargar.clone();
-        // this.listaDeArmasParaLargar[0] = new Punhal();
-        // this.listaDeArmasParaLargar[1] = new Pedra();
-        // this.listaDeArmasParaLargar[2] = new Pedra();
         this.listaCombates.add(new AtaqueMonstroSimples());
 
     }

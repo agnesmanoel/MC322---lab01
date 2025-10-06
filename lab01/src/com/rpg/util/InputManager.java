@@ -39,30 +39,6 @@ public class InputManager {
         }
     }
 
-    public static String lerString(String mensagem) {
-        
-        while (true) { 
-            
-            System.out.println(mensagem);
-            String input = null;
-            
-            try {
-                
-                input = scanner.nextLine().trim();
-                
-                if (input.isEmpty()) {
-                    continue;
-                } 
-
-                return input;
-              
-            } 
-            catch (Exception e) { 
-                System.out.println("<Entrada vazia>");
-            }
-        }
-    
-    }
 
     public static boolean lerSimNao(String mensagem) {
         

@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Classe abstrata para todos os heróis do jogo, implementa PerosonagemAbstrato.
+ * Visto que representam os protagonistas do jogo, são definidos atributos e métodos 
+ * essenciais para a lógica de combate contra monstros, e progressão ao longo da 
+ * campanha.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento 
+ */
 public abstract class HeroiAbstrato extends PersonagemAbstrato {
     
     protected int nivel;
@@ -18,6 +26,7 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
 
     /**
      * Método construtor, o qual aplica super() para inicializar componentes de PersonagemAbstrato.
+     * 
      * @param n : nome;
      * @param pv : vida;
      * @param f : força;
@@ -40,25 +49,38 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
 
     }
 
+    /**
+     * Método getter para retornar a frase de efeito do herói.
+     */
     public String getFraseDeEfeito() {
         return this.fraseDeEfeito;
     }
 
+    /**
+     * Método getter para retornar o nível do herói.
+     */
     public int getNivel() {
         return this.nivel;
     }
 
+    /**
+     * Método getter para retornar a sorte do herói.
+     */
     public int getSorte() {
         return this.sorte;
     }
 
+    /**
+     * Método getter para retornar o fator especial do herói.
+     */
     public int getFatorEspecial() {
         return this.fatorEspecial;
     }
 
     /**
-     * Método para aumentar o nível do herói. A upgrade, ele recebe incremento de vida 
-     * igual ao novo nível alcançado, e mais uma unidade de força.
+     * Método para aumentar o nível do herói. No upgrade, ele recebe incremento de vida 
+     * igual ao novo nível alcançado, e mais uma unidade de força. Além disso, sua sorte
+     * é redefinida aleatoriamente.
      */
     protected  void ganhaNivel() {
         this.nivel ++;
@@ -81,6 +103,7 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
     /**
      * Método para adquirir experiência após vitória sobre inimigo. Caso se esteja no nível 0, 
      * são necessários 2 xp para upgrade; no nível 1, são 7 xp; e para o nível 2, são 20 xp.
+     * 
      * @param xp : experiência concedida pelo inimigo.
      */
     public void ganhaExperiencia(int xp) {
@@ -150,6 +173,7 @@ public abstract class HeroiAbstrato extends PersonagemAbstrato {
 
     /**
      * Método para equipar arma encontrada após vitória em combate.
+     * 
      * @param novaArma : arma largada pelo monstro derrotado.
      */
     public void equiparArma(Arma novaArma) throws mininsuficienteArma {

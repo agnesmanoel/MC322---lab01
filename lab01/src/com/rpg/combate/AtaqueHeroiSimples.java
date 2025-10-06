@@ -4,9 +4,19 @@ import com.rpg.personagens.InterfaceCombatente;
 import com.rpg.personagens.MonstroAbstrato;
 import java.util.Random;
 
+/**
+ * Classe que implementa InterfaceAcaoDeCombate, representando a ação de combate
+ * de um herói qualquer, quando utiliza seu ataque simples.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class AtaqueHeroiSimples implements InterfaceAcaoDeCombate {
 
-    // Método de ataque simples dos heróis.
+    /**
+     * Método que implementa o ataque simples de um herói. O usuário possui 70%
+     * de chance de acerto (mais um extra de 10% por nível), e o dano é igual à 
+     * força do usuário + dano da arma.
+     */
     public void executar(InterfaceCombatente usuario, InterfaceCombatente alvo) {
 
         if (usuario instanceof HeroiAbstrato && alvo instanceof MonstroAbstrato) {
@@ -28,13 +38,6 @@ public class AtaqueHeroiSimples implements InterfaceAcaoDeCombate {
 
                 if (alvoMonstro.getPontosDeVida() <= 0) {
                     usuarioHeroi.ganhaExperiencia(alvoMonstro.getXpConcedido());
-                   // Arma armaLargada = (Arma) alvoMonstro.droparLoot();
-                     //   try{
-                       //     usuarioHeroi.equiparArma(armaLargada);
-                        //} 
-                        //catch(mininsuficienteArma e){
-                          //  System.out.println("*VOCÊ NÃO TEM NÍVEL SUFICIENTE PARA EQUIPAR ESSA ARMA");
-                        //}
                     
                 }  
             } 

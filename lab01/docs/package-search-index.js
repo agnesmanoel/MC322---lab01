@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.rpg.cenario"},{"l":"com.rpg.combate"},{"l":"com.rpg.combateTeste"},{"l":"com.rpg.exception"},{"l":"com.rpg.game"},{"l":"com.rpg.itens"},{"l":"com.rpg.personagens"},{"l":"com.rpg.util"}];updateSearchResults();

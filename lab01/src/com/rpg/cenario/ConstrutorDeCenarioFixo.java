@@ -14,16 +14,29 @@ import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Classe que implementa InterfaceGeradorDeFases, representando um construtor de cenários fixos.
+ * Aqui, as interfaces de Menu - e suas bifurcações -, introdução, derrota e vitória 
+ * são implementadas.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
     
     static  String nomePersonagem;
 
-    // Método construtor
+    /**
+     * Método construtor.
+     * 
+     * @param heroi : herói da campanha.
+     */
     public ConstrutorDeCenarioFixo(HeroiAbstrato heroi) {
         nomePersonagem = heroi.getNome();
     }
 
-    // Método para exibir introdução da campanha.
+    /**
+     * Método para exibir introdução da campanha.
+     */ 
     public static void Intro() {
 
         printaCastelo();
@@ -33,7 +46,9 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         System.out.println("Sabendo disso, "+nomePersonagem+" muniu-se de suas melhores armas e correu para salvar o castelo\n\n");
     }
 
-    // Método criado para exibir a ilustração do castelo
+    /**
+     * Método para exibir ilustração do castelo.
+     */
     public static void printaCastelo(){
                 String image = "\n";
         File imagem = new File("lab01/imagens-texto/castelo.txt");
@@ -53,7 +68,12 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         System.out.println(image);
     }
     
-    // Método para exibição de um confronto
+    /**
+     * Método para exibir confronto entre herói e monstro.
+     * 
+     * @param heroi
+     * @param monstro
+     */
     public static void Confronto(HeroiAbstrato heroi, MonstroAbstrato monstro) {
         
         Random random = new Random();
@@ -78,7 +98,12 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
 
     }
 
-    // Método criado para alinhar, por baixo, blocos de texto
+    /**
+     * Método para exibir, alinhado por baixo, dois blocos de texto.
+     * @param block1 : bloco de texto (String).
+     * @param block2: bloco de texto(String).
+     * @param separator : separador entre os blocos (String).
+     */
     public static void printSideBySideBottom(String block1, String block2, String separator) {
         
         String[] lines1 = block1.split("\\R"); // "\\R" handles various line terminators
@@ -131,7 +156,11 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         }
     }
 
-    // Método para exibição do status de um herói.
+    /**
+     * Método para exibir status de um herói.
+     * 
+     * @param heroi
+     */
     public static void Status(HeroiAbstrato heroi) {
         System.out.println("\r\n------");
         System.out.println("Status");
@@ -139,7 +168,11 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         System.out.println(heroi);
     }
 
-    // Método para exibição do status de um herói.
+    /**
+     * Método para exibir status de um monstro.
+     * 
+     * @param monstro
+     */
     public static void Status(MonstroAbstrato monstro) {
         System.out.println("\r\n------");
         System.out.println("Status");
@@ -147,7 +180,12 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         System.out.println(monstro);
     }
 
-    // Método para exibição do status de um herói e um monstro.
+    /**
+     * Método para exibir status de um herói e um monstro.
+     * 
+     * @param heroi
+     * @param monstro
+     */
     public static void Status(HeroiAbstrato heroi, MonstroAbstrato monstro) {
         System.out.println("\r\n------");
         System.out.println("Status");
@@ -155,7 +193,13 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         printSideBySideUp(heroi.toString(), monstro.toString(), "       ");
     }
 
-    // Método criado para alinhar, por cima, blocos de texto - isto é, os personagens
+    /**
+     * Método para exibir, alinhado por cima, dois blocos de texto.
+     * 
+     * @param block1 : bloco de texto (String).
+     * @param block2: bloco de texto(String).
+     * @param separator : separador entre os blocos (String).
+     */
     public static void printSideBySideUp(String block1, String block2, String separator) {
         
         String[] lines1 = block1.split("\\R"); // "\\R" handles various line terminators
@@ -186,7 +230,9 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         }
     }
     
-    // Método para exibir mensagem de vitória.
+    /**
+     * Método para exibir mensagem de vitória.
+     */
     public static void Vitoria() {
         System.out.println("Ao menos por ora, " + nomePersonagem + " mostrou-se capaz de livrar o reino Tchutchuwamako das legiões infernais.");
         System.out.println("Os assustados moradores agora podem voltar a dormir em paz...");
@@ -197,7 +243,9 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         System.out.println("\n\n");
     }
     
-    // Método para exibir mensagem de vitória.
+    /**
+     * Método para exibir mensagem de derrota.
+     */
     public static void Derrota() {
         System.out.println("As legiões infernais se apoderam do reino de Tchutchuwamako, dando início a um reinado de terror e trevas...");
         System.out.println(nomePersonagem+" fracassou em seu juramento de proteção...");
@@ -208,6 +256,11 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         System.out.println("\n\n");
     }
 
+    /**
+     * Método para exibir menu do jogo.
+     * 
+     * @return : booleano indicando se o jogo deve ser iniciado (true) ou não (false).
+     */
     public static boolean Menu() {
 
         String texto =  "___________________________________\n";
@@ -253,6 +306,11 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
 
     }
 
+    /**
+     * Método para exibir menu de escolha de dificuldade.
+     * 
+     * @return : dificuldade escolhida (Dificuldade).
+     */
     public static Dificuldade EscolherDificuldade() {
         String texto =  "____________________________\n";
         texto = texto + ".. Escolha a dificuldade  ..\n";
@@ -274,6 +332,11 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
             return Dificuldade.DIFICIL;
     }
 
+    /**
+     * Método para exibir menu de escolha de número de fases.
+     * 
+     * @return : número de fases escolhido (int).
+     */
     public static int EscolherNumeroDeFases() {
         String texto =  "________________________________\n";
         texto = texto + ".. Escolha o número de fases  ..\n";
@@ -286,6 +349,12 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         return input;
     }
     
+    /**
+     * Método para exibir menu de escolha de ações após um turno.
+     * @param heroi : persongaem da campanha (HeroiAbstrato);
+     * @param monstro : monstro derrotado (MonstroAbstrato);
+     * @return : booleano indicando se o jogo deve continuar (true) ou não (false).
+     */
     public static boolean posTurno(HeroiAbstrato heroi, MonstroAbstrato monstro) {
 
         String texto =  "________________________\n";
@@ -328,7 +397,13 @@ public class ConstrutorDeCenarioFixo implements InterfaceGeradorDeFases{
         
     }
 
-    // Método gerador de fases
+    /**
+     * Método para gerar fases de combate.
+     * 
+     * @param quantidadeDeFases : número de fases a serem geradas (int);
+     * @param dificuldade : dificuldade das fases (Dificuldade);
+     * @return : lista de fases geradas (FaseCombate[]).
+     */
     public FaseCombate[] gerar(int quantidadeDeFases, Dificuldade dificuldade) {
 
         FaseCombate[] result = new FaseCombate[quantidadeDeFases];

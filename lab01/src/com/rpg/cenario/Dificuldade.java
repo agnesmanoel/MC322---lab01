@@ -1,12 +1,16 @@
 package com.rpg.cenario;
-import java.util.Random;
-
 import com.rpg.itens.Amuleto;
 import com.rpg.itens.Arma;
 import com.rpg.itens.Coroa;
 import com.rpg.itens.Pedra;
 import com.rpg.itens.Punhal;
+import java.util.Random;
 
+/**
+ * Classe Enum para as dificuldades do jogo.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public enum Dificuldade {
     
     FACIL (0, 0, 45, 75, 100, 0),
@@ -29,16 +33,26 @@ public enum Dificuldade {
         this.probPunhal = probPunhal;
     }
 
-    /*
-     * Método "getter" para adicional de vida
+    /**
+     * Método "getter" para adicional de vida dos mosntros de uma campanha.
+     * 
+     * @return : adicional de vida (int).
      */
     public int AdicionalVida() {return this.adVida; }
 
-    /*
-     * Método "getter" para adicional de força
+    /**
+     * Método "getter" para adicional de força dos monstros de uma campanha.
+     * 
+     * @return : adicional de força (int).
      */
     public int AdicionalForca() {return this.adForca; }
 
+    /**
+     * Método que gera, aleatoriamente, as armas que os monstros largarão
+     * quando derrotados.
+     * 
+     * @return : lista de armas para largar (Arma[]).
+     */
     Arma [] ArmasParaLargar() {
         
         Arma result[];

@@ -4,6 +4,11 @@ import com.rpg.combate.InterfaceAcaoDeCombate;
 import com.rpg.itens.Arma;
 import com.rpg.itens.Coroa;
 
+/**
+ * Classe concreta que implementa MonstroAbstrato, representando um Monarca Esqueleto.
+ * 
+ * @author : Agnes Manoel e Bernardo Nascimento
+ */
 public  class MonarcaEsqueleto extends MonstroAbstrato  {
     
     /** 
@@ -29,9 +34,6 @@ public  class MonarcaEsqueleto extends MonstroAbstrato  {
               adVida, 
               adForca);
         this.listaDeArmasParaLargar = armasParaLargar.clone();
-        // this.listaDeArmasParaLargar[0] = new Coroa();
-        // this.listaDeArmasParaLargar[1] = new Amuleto();
-        // this.listaDeArmasParaLargar[2] = new Amuleto();
         this.listaCombates.add(new AtaqueMonstroSimples());
     }
 
